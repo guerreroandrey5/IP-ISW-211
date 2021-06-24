@@ -20,7 +20,7 @@ public class Main {
      */
 
     public static Scanner lee = new Scanner(System.in); 
-    Usuario User = new Usuario();
+    public static Usuario User = new Usuario();
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -34,7 +34,7 @@ public class Main {
             Main.Reg();
             break;
             case 2:
-           //Main.login();
+           Main.login();
             break;
         default:
         }
@@ -48,7 +48,7 @@ public class Main {
         return opc;
     }
     static void Reg(){
-    int ID; String nombre, fnac, email, pass;
+    int ID, tipo; String nombre, fnac, email, pass;
         System.out.println("Digite su Cédula (ID): ");
         ID = lee.nextInt();
         System.out.println("Digite su nombre completo (Si desea usar espacios, utlice guiones en lugar de espacios)");
@@ -59,9 +59,19 @@ public class Main {
         email = lee.next();
         System.out.println("Digite una contraseña: ");
         pass = lee.next();
+        System.out.println("Digite el tipo de usuario 1-Administrador 2-Empleado: ");
+        tipo = lee.nextInt();
+        if (tipo == 1) {
+         Administrador newUser = new Administrador(ID, nombre, fnac, email, "Admin", pass);
+         User.AgregarUsuario(newUser);
+        } else {
+         Empleado newUser = new Empleado(ID, nombre, fnac, email, "Empleado", pass);
+         User.AgregarUsuario(newUser);            
+        }
         Main.menu();
     }
     static void login(){
+    ArrayList<Usuario> Usuarios = User.GetUsuarios();
     int ID = 13;
     int IDinput; String passinput;
     String pass = "abc";
@@ -69,46 +79,22 @@ public class Main {
         IDinput = lee.nextInt();
         System.out.println("Digite una contraseña: ");
         passinput = lee.next();
-        if (IDinput == ID && passinput == pass){
+        for (int i = 0; i <Usuarios.size() ; i++) {
+            if (Usuarios.get(i).getID() == IDinput && Usuarios.get(i).getContra() == pass) {
+                if ("Admin" == Usuarios.get(i).getTipo()){
+                    Administrador Admin = new Administrador(Usuarios.get(i));
+                } else {
+                    Empleado Empleado = new Empleado(Usuarios.get(i));
+                }                
+            } else {
+                System.out.println("Nombre de usuario o contraseña incorrectos");
+            }
+
         }
+        
     }
-    //<editor-fold defaultstate="collapsed" desc="Menú Administrador">
-    static void calcmenu(){
-    int opcs = Main.valors();
-        switch (opcs)
-        {
-            case 1:
-            //Main.lpedi();
-            break;
-            case 2:
-            //Main.apcar();
-            break;
-            case 3:
-            //Main.pedi();
-            break;
-            case 4:
-            //Main.rec();
-            break;
-            case 5:
-            //Main.consul();
-            break;
-            case 6:
-            Main.menu();
-            break;
-        default:
-        }
-    }
-    static int valors(){
-        int opcs;
-        System.out.println("Leer Pedidos (1)");
-        System.out.println("Aprobar/Rechazar Cartas (2)");
-        System.out.println("Pedidos (3)");
-        System.out.println("Recetas (4)");
-        System.out.println("Consultas (5)");
-        System.out.println("Regresar al inicio de sesión (6)");
-        opcs = lee.nextInt();
-        return opcs;
-    }
+   
+
 
     }
     
