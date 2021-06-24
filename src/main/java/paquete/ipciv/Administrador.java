@@ -9,6 +9,6 @@ package paquete.ipciv;
  *
  * @author Cris
  */
-public class Administrador {
+public class Administrador extends Usuario {
     
 }
