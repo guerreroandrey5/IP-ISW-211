@@ -10,29 +10,28 @@ package paquete.ipciv;
  * @author Cris
  */
 public class Administrador extends Usuario {
-
-    protected int ID;
-    protected String Name;
     
-    public Administrador(){
-        this.ID = 0;
-        this.Name = "";
-    }
-    
-    public Administrador(int Cedula, String Nombre){
-        this.ID = Cedula;
-        this.Name = Nombre;
-        boolean control = false;
-        
+    public Administrador(Usuario user){
+        boolean control = true;
         while(control){
             control = menu();
         }
     }
     
+    public Administrador(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase){
+        super(Ced, Nombre, Fecha, Correo, Tipo, Contrase);
+
+    }
+    
     public boolean menu(){
         int opt;
-        System.out.println("Bienvenido " + this.Name);
-        System.out.println("Seleccione la accion que desea realizar: \n1-Leer pedidos\n2-Administrar Pedidos\n3-Procesar Pedidos\n4-Consultas\n5-Salir");
+        System.out.println("Bienvenido " + getName());
+        System.out.println("Leer Pedidos (1)");
+        System.out.println("Aprobar/Rechazar Cartas (2)");
+        System.out.println("Pedidos (3)");
+        System.out.println("Recetas (4)");
+        System.out.println("Consultas (5)");
+        System.out.println("Regresar al inicio de sesión (6)");
         opt = lee.nextInt();
         switch (opt) {
             case 1:
@@ -47,9 +46,9 @@ public class Administrador extends Usuario {
                 Consultas();
                 break;
             case 5:
-                return true;
+                return false;
         }
-        return false;
+        return true;
     }
 
     public static void LeerPedidos() {
@@ -67,10 +66,5 @@ public class Administrador extends Usuario {
          
      }
      
-     public String getNombre() {
-         return this.Name;
-     }
-     public int getID(){
-         return this.ID;
-     }
+
 }
