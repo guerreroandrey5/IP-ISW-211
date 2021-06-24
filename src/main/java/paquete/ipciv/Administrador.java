@@ -41,11 +41,13 @@ public class Administrador extends Usuario {
                 AdministrarPedidos();
                 break;
             case 3:
-                ProcesarPedidos();
+                Pedidos();
             case 4:
-                Consultas();
+                Recetas();
                 break;
             case 5:
+                Consultas();
+            case 6:
                 return false;
         }
         return true;
@@ -58,7 +60,11 @@ public class Administrador extends Usuario {
          
      }
      
-     public static void ProcesarPedidos(){
+     public static void Pedidos(){
+         
+     }
+     
+     public static void Recetas(){
          
      }
      
