@@ -29,7 +29,7 @@ public class Usuario {
         this.Type = "";
     }
     
-    public Usuario(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase){
+    public Usuario(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase) {
         this.ID = Ced;
         this.Correo = Correo;
         this.FechaNacimiento = Fecha;
