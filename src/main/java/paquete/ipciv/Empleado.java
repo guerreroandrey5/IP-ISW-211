@@ -9,6 +9,6 @@ package paquete.ipciv;
  *
  * @author Cris
  */
-public class Empleado {
+public class Empleado extends Usuario {
     
 }
