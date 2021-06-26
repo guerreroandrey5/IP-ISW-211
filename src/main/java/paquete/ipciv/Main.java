@@ -19,14 +19,15 @@ public class Main {
      * @param args the command line arguments
      */
 
-    public static Scanner lee = new Scanner(System.in); 
-    public static Usuario User = new Usuario();
-
+    public static Scanner lee = new Scanner(System.in);
+    public static ArrayList<Usuario> Usuarios = new ArrayList();
+    
     public static void main(String[] args) {
         // TODO code application logic here
          Main.menu();
     }
     static void menu(){
+        while (true) {
         int opc = Main.valor();
         switch (opc)
         {
@@ -37,7 +38,9 @@ public class Main {
            Main.login();
             break;
         default:
+        }            
         }
+
     }
 
     static int valor(){
@@ -63,32 +66,31 @@ public class Main {
         tipo = lee.nextInt();
         if (tipo == 1) {
          Administrador newUser = new Administrador(ID, nombre, fnac, email, "Admin", pass);
-         User.AgregarUsuario(newUser);
+         Usuarios.add(newUser);
         } else {
          Empleado newUser = new Empleado(ID, nombre, fnac, email, "Empleado", pass);
-         User.AgregarUsuario(newUser);            
+         Usuarios.add(newUser);            
         }
         Main.menu();
     }
     static void login(){
-    ArrayList<Usuario> Usuarios = User.GetUsuarios();
+    
     int ID = 13;
-    int IDinput; String passinput;
-    String pass = "abc";
+    int IDinput; 
+    String passinput;
         System.out.println("Digite su Cédula (ID): ");
         IDinput = lee.nextInt();
         System.out.println("Digite una contraseña: ");
         passinput = lee.next();
         for (int i = 0; i <Usuarios.size() ; i++) {
-            if (Usuarios.get(i).getID() == IDinput && Usuarios.get(i).getContra() == pass) {
+            System.out.println(Usuarios.get(i).getContra().equals(passinput));
+            if (Usuarios.get(i).getID() == IDinput && Usuarios.get(i).getContra().equals(passinput)) {
                 if ("Admin" == Usuarios.get(i).getTipo()){
                     Administrador Admin = new Administrador(Usuarios.get(i));
                 } else {
                     Empleado Empleado = new Empleado(Usuarios.get(i));
                 }                
-            } else {
-                System.out.println("Nombre de usuario o contraseña incorrectos");
-            }
+            } 
 
         }
         

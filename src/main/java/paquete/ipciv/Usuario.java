@@ -18,7 +18,6 @@ public class Usuario {
     private String Correo;
     private String Type;
     private String Password;
-    private ArrayList<Usuario> Usuarios = new ArrayList();
     
     public Usuario(){
         this.ID = 0;
@@ -38,15 +37,6 @@ public class Usuario {
         this.Type = Tipo;
     }
     
-    
-    
-    public void AgregarUsuario(Usuario user){
-        this.Usuarios.add(user);
-    }
-    
-    public ArrayList GetUsuarios(){
-        return this.Usuarios;
-    }
     
     public String getName() {
         return this.Name;

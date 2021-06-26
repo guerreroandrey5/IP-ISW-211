@@ -11,10 +11,13 @@ package paquete.ipciv;
  */
 public class Administrador extends Usuario {
     
-    public Administrador(Usuario user){
+    public Administrador(Usuario User){
+        String Name = User.getName();
+        System.out.println(Name);
         boolean control = true;
         while(control){
             control = menu();
+        
         }
     }
     

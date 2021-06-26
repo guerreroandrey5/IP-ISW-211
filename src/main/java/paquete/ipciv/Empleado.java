@@ -12,9 +12,12 @@ package paquete.ipciv;
 public class Empleado extends Usuario {
     
     public Empleado(Usuario user){
+        String Name = user.getName();
+        System.out.println(Name);
         boolean control = true;
         while(control){
             control = menu();
+        
         }
     }
     
