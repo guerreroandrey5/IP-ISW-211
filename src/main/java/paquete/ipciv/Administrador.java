@@ -11,13 +11,15 @@ package paquete.ipciv;
  */
 public class Administrador extends Usuario {
     
+    public static Usuario USER = new Usuario();
+    
+    
     public Administrador(Usuario User){
-        String Name = User.getName();
-        System.out.println(Name);
+        USER = User;
+        System.out.println("Bienvenido " + USER.getName());
         boolean control = true;
         while(control){
             control = menu();
-        
         }
     }
     
@@ -28,7 +30,6 @@ public class Administrador extends Usuario {
     
     public boolean menu(){
         int opt;
-        System.out.println("Bienvenido " + getName());
         System.out.println("Leer Pedidos (1)");
         System.out.println("Aprobar/Rechazar Cartas (2)");
         System.out.println("Pedidos (3)");
