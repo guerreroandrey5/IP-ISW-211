@@ -55,4 +55,8 @@ public class Usuario {
         return this.Type;
     }
     
+    public String getCorreo(){
+        return this.Correo;
+    }
+    
 }

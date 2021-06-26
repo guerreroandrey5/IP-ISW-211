@@ -18,7 +18,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static Usuario USER = new Usuario();
+
     public static Scanner lee = new Scanner(System.in);
     public static ArrayList<Usuario> Usuarios = new ArrayList();
     
@@ -83,18 +83,17 @@ public class Main {
         System.out.println("Digite una contraseña: ");
         passinput = lee.next();
         for (int i = 0; i <Usuarios.size() ; i++) {
+            System.out.println(Usuarios.get(i).getContra().equals(passinput));
             if (Usuarios.get(i).getID() == IDinput && Usuarios.get(i).getContra().equals(passinput)) {
-                boolean control = true;
-                USER = Usuarios.get(i);
-                System.out.println("Bienvenido " + USER.getName());
+                System.out.println("Bienvenido " + Usuarios.get(i).getName());
                 if ("Admin" == Usuarios.get(i).getTipo()){
+                    Administrador USER = new Administrador(Usuarios.get(i));
+                    boolean control = true;
                     while(control){
-                        control = menuUsuario(true);
+                        control = USER.Menu();
                     }
                 } else {
-                    while(control){
-                        control = menuUsuario(false);
-                    }
+                    Empleado USER = new Empleado(Usuarios.get(i));
                 }                
             } 
 
@@ -102,74 +101,7 @@ public class Main {
         
     }
    
-    public static boolean menuUsuario(boolean Admin){
-        int opt;
-        if(Admin) {
-            System.out.println("Leer Pedidos (1)");
-            System.out.println("Aprobar/Rechazar Cartas (2)");
-            System.out.println("Pedidos (3)");
-            System.out.println("Recetas (4)");
-            System.out.println("Consultas (5)");
-            System.out.println("Regresar al inicio de sesión (6)");
-            opt = lee.nextInt();
-            switch (opt) {
-                case 1:
-                    LeerPedidos();
-                    break;
-                case 2:
-                    AdministrarPedidos();
-                    break;
-                case 3:
-                    Pedidos();
-                case 4:
-                    Recetas();
-                    break;
-                case 5:
-                    Consultas();
-                case 6:
-                    return false;
-            }
-        } else {
-            opt = lee.nextInt();
-            switch (opt) {
-                case 1:
-                
-                    break;
-                case 2:
-                
-                    break;
-                case 3:
-                    break;
-                case 4:
-                
-                    break;
-                case 5:
-                    return false;
-        }
-        }
 
-        return true;
-    }
-
-    public static void LeerPedidos() {
-        
-    }
-     public static void AdministrarPedidos(){
-         
-     }
-     
-     public static void Pedidos(){
-         
-     }
-     
-     public static void Recetas(){
-         
-     }
-     
-     public static void Consultas(){
-         
-     }
-     
 
     }
     

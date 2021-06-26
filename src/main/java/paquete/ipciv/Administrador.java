@@ -14,6 +14,7 @@ public class Administrador extends Usuario {
 
     
     public Administrador(Usuario User){
+       super(User.getID(),User.getName(), User.getFecha(), User.getCorreo(), User.getTipo(), User.getContra());
     }
     
     public Administrador(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase){
@@ -21,6 +22,54 @@ public class Administrador extends Usuario {
 
     }
     
+    public boolean Menu(){
+        int opt;
+        System.out.println("Leer Pedidos (1)");
+            System.out.println("Aprobar/Rechazar Cartas (2)");
+            System.out.println("Pedidos (3)");
+            System.out.println("Recetas (4)");
+            System.out.println("Consultas (5)");
+            System.out.println("Regresar al inicio de sesión (6)");
+            opt = lee.nextInt();
+            switch (opt) {
+                case 1:
+                    LeerPedidos();
+                    break;
+                case 2:
+                    AdministrarPedidos();
+                    break;
+                case 3:
+                    Pedidos();
+                case 4:
+                    Recetas();
+                    break;
+                case 5:
+                    Consultas();
+                case 6:
+                    return false;
+            }
+            return true;
+    }
+    
 
+    public static void LeerPedidos() {
+        
+    }
+     public static void AdministrarPedidos(){
+         
+     }
+     
+     public static void Pedidos(){
+         
+     }
+     
+     public static void Recetas(){
+         
+     }
+     
+     public static void Consultas(){
+         
+     }
+     
 
 }
