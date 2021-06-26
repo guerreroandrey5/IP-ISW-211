@@ -12,13 +12,7 @@ package paquete.ipciv;
 public class Empleado extends Usuario {
     
     public Empleado(Usuario user){
-        String Name = user.getName();
-        System.out.println(Name);
-        boolean control = true;
-        while(control){
-            control = menu();
-        
-        }
+
     }
     
     public Empleado(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase){
@@ -26,25 +20,4 @@ public class Empleado extends Usuario {
 
     }
     
-        public boolean menu(){
-        int opt;
-        System.out.println("Bienvenido " + getName());
-        opt = lee.nextInt();
-        switch (opt) {
-            case 1:
-                
-                break;
-            case 2:
-                
-                break;
-            case 3:
-                
-            case 4:
-                
-                break;
-            case 5:
-                return false;
-        }
-        return true;
-    }
 }
