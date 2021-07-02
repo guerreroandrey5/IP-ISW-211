@@ -25,23 +25,34 @@ public class Empleado extends Usuario {
     
         public boolean menu(){
         int opt;
-        System.out.println("Bienvenido " + getName());
+            System.out.println("Registrar Clientes (1)");
+            System.out.println("Realizar/Finalizar Pedido (2)");
+            System.out.println("Imprimir Váucher/Etiqueta (3)");
+            System.out.println("Regresar al inicio de sesión (4)");
         opt = lee.nextInt();
         switch (opt) {
             case 1:
-                
+                RegClient();
                 break;
             case 2:
-                
+                ReaFinPed();
                 break;
             case 3:
-                
-            case 4:
-                
+                PrintEti();
                 break;
-            case 5:
+            case 4:
                 return false;
         }
         return true;
     }
+     public static void RegClient() {
+        
+     }
+     public static void ReaFinPed(){   
+     }
+     
+     public static void PrintEti(){
+         
+     }
+     
 }

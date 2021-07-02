@@ -24,7 +24,7 @@ public class Administrador extends Usuario {
     
     public boolean Menu(){
         int opt;
-        System.out.println("Leer Pedidos (1)");
+            System.out.println("Leer Pedidos (1)");
             System.out.println("Aprobar/Rechazar Cartas (2)");
             System.out.println("Pedidos (3)");
             System.out.println("Recetas (4)");

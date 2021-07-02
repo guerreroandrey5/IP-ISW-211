@@ -35,7 +35,7 @@ public class Main {
             Main.Reg();
             break;
             case 2:
-           Main.login();
+            Main.login();
             break;
         default:
         }            
@@ -56,7 +56,7 @@ public class Main {
         ID = lee.nextInt();
         System.out.println("Digite su nombre completo (Si desea usar espacios, utlice guiones en lugar de espacios)");
         nombre = lee.next();
-        System.out.println("Digite su fecha de nacimiento (XX/XX/XXXX): ");
+        System.out.println("Digite su fecha de nacimiento (dd/mm/aaaa): ");
         fnac = lee.next();
         System.out.println("Digite su correo electrónico: ");
         email = lee.next();
@@ -67,9 +67,14 @@ public class Main {
         if (tipo == 1) {
          Administrador newUser = new Administrador(ID, nombre, fnac, email, "Admin", pass);
          Usuarios.add(newUser);
-        } else {
+        }
+        if (tipo == 2) {
          Empleado newUser = new Empleado(ID, nombre, fnac, email, "Empleado", pass);
          Usuarios.add(newUser);            
+        }
+        else {
+            System.out.println("Selección inválida");
+            Main.Reg();
         }
         Main.menu();
     }
@@ -96,13 +101,8 @@ public class Main {
                     Empleado USER = new Empleado(Usuarios.get(i));
                 }                
             } 
-
-        }
-        
+        }       
     }
-   
-
-
-    }
+}
     
 
