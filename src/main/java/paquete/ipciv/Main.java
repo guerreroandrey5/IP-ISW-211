@@ -24,7 +24,11 @@ public class Main {
     
     public static void main(String[] args) {
         // TODO code application logic here
-         Main.menu();
+        Administrador newUserad = new Administrador(23, "Pedro", "06/11/2002", "admin@mueblesitos.siuuu", "Admin", "123");
+        Empleado newUserem = new Empleado(20, "Esteban", "20/06/2000", "worker@mueblesitos.siuuu", "Empleado", "13");
+        Usuarios.add(newUserad); 
+        Usuarios.add(newUserem);
+         Main.menu();        
     }
     static void menu(){
         while (true) {
@@ -32,55 +36,24 @@ public class Main {
         switch (opc)
         {
             case 1:
-            Main.Reg();
-            break;
-            case 2:
             Main.login();
             break;
+            //case 2:
+            //Main.login();
+            //break;
         default:
         }            
         }
-
     }
 
     static int valor(){
         int opc;
-        System.out.println("Registro (1)");
-        System.out.println("Login (2)");
+        System.out.println("Bienvenido al sistema de la Fábrica de Muebles");
+        System.out.println("Login (1)");
         opc = lee.nextInt();
         return opc;
     }
-    static void Reg(){
-    int ID, tipo; String nombre, fnac, email, pass;
-        System.out.println("Digite su Cédula (ID): ");
-        ID = lee.nextInt();
-        System.out.println("Digite su nombre completo (Si desea usar espacios, utlice guiones en lugar de espacios)");
-        nombre = lee.next();
-        System.out.println("Digite su fecha de nacimiento (dd/mm/aaaa): ");
-        fnac = lee.next();
-        System.out.println("Digite su correo electrónico: ");
-        email = lee.next();
-        System.out.println("Digite una contraseña: ");
-        pass = lee.next();
-        System.out.println("Digite el tipo de usuario 1-Administrador 2-Empleado: ");
-        tipo = lee.nextInt();
-        if (tipo == 1) {
-         Administrador newUser = new Administrador(ID, nombre, fnac, email, "Admin", pass);
-         Usuarios.add(newUser);
-        }
-        if (tipo == 2) {
-         Empleado newUser = new Empleado(ID, nombre, fnac, email, "Empleado", pass);
-         Usuarios.add(newUser);            
-        }
-        else {
-            System.out.println("Selección inválida");
-            Main.Reg();
-        }
-        Main.menu();
-    }
     static void login(){
-    
-    int ID = 13;
     int IDinput; 
     String passinput;
         System.out.println("Digite su Cédula (ID): ");

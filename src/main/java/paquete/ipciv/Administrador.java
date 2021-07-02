@@ -10,18 +10,13 @@ package paquete.ipciv;
  * @author Cris
  */
 public class Administrador extends Usuario {
-    
-
-    
+     
     public Administrador(Usuario User){
        super(User.getID(),User.getName(), User.getFecha(), User.getCorreo(), User.getTipo(), User.getContra());
-    }
-    
+    }   
     public Administrador(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase){
-        super(Ced, Nombre, Fecha, Correo, Tipo, Contrase);
-
-    }
-    
+       super(Ced, Nombre, Fecha, Correo, Tipo, Contrase);
+    }   
     public boolean Menu(){
         int opt;
             System.out.println("Leer Pedidos (1)");
@@ -34,17 +29,24 @@ public class Administrador extends Usuario {
             switch (opt) {
                 case 1:
                     LeerPedidos();
+                    
                     break;
                 case 2:
                     AdministrarPedidos();
+                    
                     break;
                 case 3:
                     Pedidos();
+                    
+                    break;
                 case 4:
                     Recetas();
+                    
                     break;
                 case 5:
                     Consultas();
+                    
+                    break;
                 case 6:
                     return false;
             }
