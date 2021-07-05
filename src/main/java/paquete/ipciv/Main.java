@@ -21,6 +21,7 @@ public class Main {
 
     public static Scanner lee = new Scanner(System.in);
     public static ArrayList<Usuario> Usuarios = new ArrayList();
+    public static ArrayList<Pedidos> Pedidos = new ArrayList();
     
     public static void main(String[] args) {
         // TODO code application logic here
@@ -72,6 +73,10 @@ public class Main {
                     }
                 } else {
                     Empleado USER = new Empleado(Usuarios.get(i));
+                    boolean control = true;
+                    while(control){
+                        control = USER.Menu();
+                    }
                 }                
             } 
         }       

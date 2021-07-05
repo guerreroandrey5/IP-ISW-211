@@ -17,4 +17,8 @@ public class Cliente extends Usuario {
         this.direcc = direcc;
 
     }
+    
+    public String getDirection(){
+        return this.direcc;
+    }
 }

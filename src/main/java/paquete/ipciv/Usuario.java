@@ -11,13 +11,14 @@ import java.util.ArrayList;
  * @author Cris
  */
 public class Usuario {
-    public Scanner lee = new Scanner(System.in);  
+    public static Scanner lee = new Scanner(System.in);  
     private int ID;
     private String Name;
     private String FechaNacimiento;
     private String Correo;
     private String Type;
     private String Password;
+    protected ArrayList<Pedidos> APedidos;
     
     public Usuario(){
         this.ID = 0;
@@ -30,11 +31,13 @@ public class Usuario {
     
     public Usuario(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase) {
         this.ID = Ced;
+        this.APedidos = Main.Pedidos;
         this.Correo = Correo;
         this.FechaNacimiento = Fecha;
         this.Name = Nombre; 
         this.Password = Contrase;
         this.Type = Tipo;
+        
     }
     
     
@@ -57,6 +60,16 @@ public class Usuario {
     
     public String getCorreo(){
         return this.Correo;
+    }
+    
+    public static String getNameClient(String ID){
+        String name = "";
+        for (int i = 0; i < Main.Usuarios.size(); i++) {
+            if (ID.equals(Main.Usuarios.get(i).ID)){
+                name = Main.Usuarios.get(i).Name;
+            }
+        }
+        return name;
     }
     
 }

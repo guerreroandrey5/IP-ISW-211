@@ -4,29 +4,21 @@
  * and open the template in the editor.
  */
 package paquete.ipciv;
-
-import java.util.ArrayList;
 import java.util.Scanner;
-import static paquete.ipciv.Main.Usuarios;
 
 /**
  *
  * @author Cris
  */
 public class Empleado extends Usuario {
-    public static Scanner lee = new Scanner(System.in);
-    public static ArrayList<Usuario> Usuarios = new ArrayList();
     
-    public Empleado(Usuario user){
-        boolean control = true;
-        while(control){
-            control = menu();
-        }
+    public Empleado(Usuario User){
+        super(User.getID(),User.getName(), User.getFecha(), User.getCorreo(), User.getTipo(), User.getContra());
     }  
     public Empleado(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String Contrase){
         super(Ced, Nombre, Fecha, Correo, Tipo, Contrase);
     }  
-        public boolean menu(){
+        public boolean Menu(){
         int opt;
             System.out.println("Registrar Clientes (1)");
             System.out.println("Realizar/Finalizar Pedido (2)");
@@ -62,10 +54,44 @@ public class Empleado extends Usuario {
         System.out.println("Digite la dirección del domicilio del cliente: ");
         direcc = lee.next();
         Cliente newUser = new Cliente(ID, nombre, fnac, email, "Cliente", direcc, pass);
-        Usuarios.add(newUser);
+        Main.Usuarios.add(newUser);
      }
-     public static void ReaFinPed(){   
+     
+     public static void ReaFinPed(){
+         int opt;
+            System.out.println("Realizar Pedido (1)");
+            System.out.println("Finalizar Pedido (2)");
+            System.out.println("Salirr (3)");
+        opt = lee.nextInt();
+        switch (opt) {
+            case 1:
+                System.out.println("Digite la Cédula del cliente: ");
+                String IDC = lee.next();
+                String name = getNameClient(IDC);
+                if (name != "") {
+                String state = "En revision";
+                System.out.println("Ingrese el material del mueble 1-Madera 2-Metal");
+                int material = lee.nextInt();
+                System.out.println("Digite el color de la pintura");
+                String pintura = lee.next();
+                System.out.println("Ingrese el material a utilizar 1-Tornillos 2-Clavos");
+                int un = lee.nextInt();
+                Pedidos pedido = new Pedidos(name, state, material, pintura, un);
+                Main.Pedidos.add(pedido);
+                } else {
+                    System.out.println("El cliente no se encuentra registrado!");
+                }
+            case 2:
+                ReaFinPed();
+                break;
+            case 3:
+                break;
+        }         
+         
      }
+
+
+     
      
      public static void PrintEti(){
         
