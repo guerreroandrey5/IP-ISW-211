@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package paquete.ipciv;
-import java.util.Scanner;
 
 /**
  *
@@ -82,7 +81,13 @@ public class Empleado extends Usuario {
                     System.out.println("El cliente no se encuentra registrado!");
                 }
             case 2:
-                ReaFinPed();
+                int cont = 0;
+                for (int i = 0; i < Main.Pedidos.size(); i++) {
+                    if ("Aprovado".equals(Main.Pedidos.get(i).Estado)) {
+                        cont += 1;
+                        System.out.print(cont + Main.Pedidos.get(i).getInfoPedido());
+                    }
+                }
                 break;
             case 3:
                 break;

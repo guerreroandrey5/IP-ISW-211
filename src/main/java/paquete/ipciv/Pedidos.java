@@ -60,4 +60,96 @@ public class Pedidos {
     }
     
     }
+
+    public String getNombre_Cliente() {
+        return Nombre_Cliente;
+    }
+
+    public void setNombre_Cliente(String Nombre_Cliente) {
+        this.Nombre_Cliente = Nombre_Cliente;
+    }
+
+    public String getTipo_mueble() {
+        return Tipo_mueble;
+    }
+
+    public void setTipo_mueble(String Tipo_mueble) {
+        this.Tipo_mueble = Tipo_mueble;
+    }
+
+    public String getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+
+    public int getMadera() {
+        return madera;
+    }
+
+    public void setMadera(int madera) {
+        this.madera = madera;
+    }
+
+    public int getMetal() {
+        return metal;
+    }
+
+    public void setMetal(int metal) {
+        this.metal = metal;
+    }
+
+    public int getPintura() {
+        return pintura;
+    }
+
+    public void setPintura(int pintura) {
+        this.pintura = pintura;
+    }
+
+    public int getClavos() {
+        return clavos;
+    }
+
+    public void setClavos(int clavos) {
+        this.clavos = clavos;
+    }
+
+    public int getTornillos() {
+        return tornillos;
+    }
+
+    public void setTornillos(int tornillos) {
+        this.tornillos = tornillos;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+    
+    public String getInfoPedido() {
+        String info = "ID pedido:" + getID() + "\n" +
+                "Nombre del Cliente: " + getID() + "\n" +
+                "Estado: " + getID() + "\n" +
+                "Tipo de mueble: " + getID() + "\n" +
+                "Cantidad de materiales: Madera: " + getMadera() + ", Metal: " + getMetal()+  "\n" +
+                "Cantidad de pintura: " + getPintura() + ", Color: " + getColor() + "\n" +
+                "Cantidad de clavos" + getClavos() + ", cantidad de tornillos" + getTornillos() + "\n";
+        return info;
+    }
+    
 }
