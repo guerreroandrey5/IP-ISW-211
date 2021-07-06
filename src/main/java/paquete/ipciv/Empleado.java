@@ -97,7 +97,11 @@ public class Empleado extends Usuario {
      
      
      public static void PrintEti(){
-        
+        for(int i = 0; i < Main.Pedidos.size() ; i++) {
+            if("Completado".equals(Main.Pedidos.get(i).Estado)){
+                Main.Pedidos.get(i).getInfoPedido();
+            }
+        }
      }
      
 }
