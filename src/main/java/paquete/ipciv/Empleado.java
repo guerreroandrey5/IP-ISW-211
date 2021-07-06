@@ -67,7 +67,7 @@ public class Empleado extends Usuario {
                 System.out.println("Digite la Cédula del cliente: ");
                 String IDC = lee.next();
                 String name = getNameClient(IDC);
-                if (name != "") {
+
                 String state = "En revision";
                 System.out.println("Ingrese el material del mueble 1-Madera 2-Metal");
                 int material = lee.nextInt();
@@ -77,9 +77,7 @@ public class Empleado extends Usuario {
                 int un = lee.nextInt();
                 Pedidos pedido = new Pedidos(name, state, material, pintura, un);
                 Main.Pedidos.add(pedido);
-                } else {
-                    System.out.println("El cliente no se encuentra registrado!");
-                }
+
             case 2:
                 int cont = 0;
                 for (int i = 0; i < Main.Pedidos.size(); i++) {
