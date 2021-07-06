@@ -44,7 +44,7 @@ public class Empleado extends Usuario {
         String pass = "";
         System.out.println("Digite la Cédula del cliente: ");
         ID = lee.nextInt();
-        System.out.println("Digite el nombre completo del cliente (Si desea usar espacios, utlice guiones en lugar de espacios)");
+        System.out.println("Digite el nombre completo del cliente (Si desea usar espacios, utlice guiones en lugar de espacios): ");
         nombre = lee.next();
         System.out.println("Digite la fecha de nacimiento del cliente (dd/mm/aaaa): ");
         fnac = lee.next();
@@ -60,28 +60,27 @@ public class Empleado extends Usuario {
          int opt;
             System.out.println("Realizar Pedido (1)");
             System.out.println("Finalizar Pedido (2)");
-            System.out.println("Salirr (3)");
+            System.out.println("Volver (3)");
         opt = lee.nextInt();
         switch (opt) {
             case 1:
                 System.out.println("Digite la Cédula del cliente: ");
-                String IDC = lee.next();
+                int IDC = lee.nextInt();
                 String name = getNameClient(IDC);
-
-                String state = "En revision";
-                System.out.println("Ingrese el material del mueble 1-Madera 2-Metal");
+                String state = "En revisión.";
+                System.out.println("Ingrese el material del mueble (1-Madera 2-Metal): ");
                 int material = lee.nextInt();
-                System.out.println("Digite el color de la pintura");
+                System.out.println("Digite el color de la pintura: ");
                 String pintura = lee.next();
-                System.out.println("Ingrese el material a utilizar 1-Tornillos 2-Clavos");
+                System.out.println("Ingrese el material a utilizar (1-Tornillos 2-Clavos): ");
                 int un = lee.nextInt();
-                Pedidos pedido = new Pedidos(name, state, material, pintura, un);
+                Pedido pedido = new Pedido(name, state, material, pintura, un);
                 Main.Pedidos.add(pedido);
 
             case 2:
                 int cont = 0;
                 for (int i = 0; i < Main.Pedidos.size(); i++) {
-                    if ("Aprovado".equals(Main.Pedidos.get(i).Estado)) {
+                    if ("Aprobado".equals(Main.Pedidos.get(i).Estado)) {
                         cont += 1;
                         System.out.print(cont + Main.Pedidos.get(i).getInfoPedido());
                     }
@@ -91,13 +90,8 @@ public class Empleado extends Usuario {
                 break;
         }         
          
-     }
-
-
-     
-     
+     } 
      public static void PrintEti(){
         
-     }
-     
+    }
 }
