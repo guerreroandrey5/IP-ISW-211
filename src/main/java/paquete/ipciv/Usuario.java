@@ -62,10 +62,10 @@ public class Usuario {
         return this.Correo;
     }
     
-    public static String getNameClient(String ID){
+    public static String getNameClient(int ID){
         String name = "";
         for (int i = 0; i < Main.Usuarios.size(); i++) {
-            if (ID.equals(Main.Usuarios.get(i).ID)){
+            if (ID == Main.Usuarios.get(i).ID ){
                 name = Main.Usuarios.get(i).Name;
             }
         }
