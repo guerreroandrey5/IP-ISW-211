@@ -20,15 +20,23 @@ public class Main {
      */
 
     public static Scanner lee = new Scanner(System.in);
-    public static ArrayList<Usuario> Usuarios = new ArrayList();
-    public static ArrayList<Pedidos> Pedidos = new ArrayList();
+    public static ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
+    public static ArrayList<Pedido> Pedidos = new ArrayList<Pedido>();
+    public static ArrayList<Receta> Recetas = new ArrayList<Receta>();
+//    public static ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
     
     public static void main(String[] args) {
         // TODO code application logic here
         Administrador newUserad = new Administrador(23, "Pedro", "06/11/2002", "admin@mueblesitos.siuuu", "Admin", "123");
         Empleado newUserem = new Empleado(20, "Esteban", "20/06/2000", "worker@mueblesitos.siuuu", "Empleado", "13");
+        Receta newRecipe = new Receta("Mesita", /*Madera*/10, /*Metal*/0, /*Pintura*/20, /*Clavos*/10, /*Tornillos*/0);
+        Receta newRecipez = new Receta("Banquito de Metal Reforzado", /*Madera*/0, /*Metal*/20, /*Pintura*/15, /*Clavos*/0, /*Tornillos*/20);
+//        Cliente newUsercl = new Cliente(22, "Piter", "20/06/2000", "Piter@haus.com", "Cliente", "Choza","");
         Usuarios.add(newUserad); 
+//        Clientes.add(newUsercl);
         Usuarios.add(newUserem);
+        Recetas.add(newRecipe); 
+        Recetas.add(newRecipez); 
          Main.menu();        
     }
     static void menu(){

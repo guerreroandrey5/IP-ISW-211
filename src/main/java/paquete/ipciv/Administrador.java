@@ -55,18 +55,24 @@ public class Administrador extends Usuario {
     
 
     public static void LeerPedidos() {
-        
+        for (int i = 0; i < Main.Pedidos.size(); i++) {
+                System.out.println(Main.Pedidos.get(i));
+        }
     }
      public static void AdministrarPedidos(){
          
      }
      
      public static void Pedidos(){
-         
+         for (int i = 0; i < Main.Pedidos.size(); i++) {
+                System.out.println(Main.Pedidos.get(i));
+        }
      }
      
      public static void Recetas(){
-         
+         for (int i = 0; i < Main.Recetas.size(); i++) {
+                System.out.println(Main.Recetas.get(i));
+        }
      }
      
      public static void Consultas(){

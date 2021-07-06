@@ -12,13 +12,13 @@ import java.util.ArrayList;
  */
 public class Usuario {
     public static Scanner lee = new Scanner(System.in);  
-    private int ID;
-    private String Name;
-    private String FechaNacimiento;
-    private String Correo;
-    private String Type;
-    private String Password;
-    protected ArrayList<Pedidos> APedidos;
+    protected int ID;
+    protected String Name;
+    protected String FechaNacimiento;
+    protected String Correo;
+    protected String Type;
+    protected String Password;
+    protected ArrayList<Pedido> APedidos;
     
     public Usuario(){
         this.ID = 0;
@@ -42,7 +42,7 @@ public class Usuario {
     
     
     public String getName() {
-        return this.Name;
+        return this.Name;   
     }
     public int getID() {
         return this.ID;
@@ -71,5 +71,4 @@ public class Usuario {
         }
         return name;
     }
-    
 }
