@@ -65,7 +65,7 @@ public class Empleado extends Usuario {
         switch (opt) {
             case 1:
                 System.out.println("Digite la Cédula del cliente: ");
-                String IDC = lee.next();
+                int IDC = lee.nextInt();
                 String name = getNameClient(IDC);
 
                 String state = "En revision";
