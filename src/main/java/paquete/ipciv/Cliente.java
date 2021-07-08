@@ -21,4 +21,10 @@ public class Cliente extends Usuario {
     public String getDirection(){
         return this.direcc;
     }
+
+    @Override
+    public String toString() {
+        return "Cédula: " + ID + ", Nombre: " + Name + ", Fecha de Nacimiento: " + FechaNacimiento + ", Email: " + Correo + ", Dirección de Domicilio: " + direcc; 
+    }
+    
 }
