@@ -31,9 +31,9 @@ public class Main {
         Empleado newUserem = new Empleado(20, "Esteban", "20/06/2000", "worker@mueblesitos.siuuu", "Empleado", "13");
         Receta newRecipe = new Receta("Mesita", /*Madera*/10, /*Metal*/0, /*Pintura*/20, /*Clavos*/10, /*Tornillos*/0);
         Receta newRecipez = new Receta("Banquito de Metal Reforzado", /*Madera*/0, /*Metal*/20, /*Pintura*/15, /*Clavos*/0, /*Tornillos*/20);
-//        Cliente newUsercl = new Cliente(22, "Piter", "20/06/2000", "Piter@haus.com", "Cliente", "Choza","");
+        Cliente newUsercl = new Cliente(22, "Piter", "20/06/2000", "Piter@haus.com", "Cliente", "Choza","");
         Usuarios.add(newUserad); 
-//        Clientes.add(newUsercl);
+        Usuarios.add(newUsercl);
         Usuarios.add(newUserem);
         Recetas.add(newRecipe); 
         Recetas.add(newRecipez); 
@@ -70,22 +70,23 @@ public class Main {
         System.out.println("Digite una contraseña: ");
         passinput = lee.next();
         for (int i = 0; i <Usuarios.size() ; i++) {
-            System.out.println(Usuarios.get(i).getContra().equals(passinput));
             if (Usuarios.get(i).getID() == IDinput && Usuarios.get(i).getContra().equals(passinput)) {
-                System.out.println("Bienvenido " + Usuarios.get(i).getName());
                 if ("Admin" == Usuarios.get(i).getTipo()){
+                    System.out.println("Bienvenido " + Usuarios.get(i).getName());
                     Administrador USER = new Administrador(Usuarios.get(i));
                     boolean control = true;
                     while(control){
                         control = USER.Menu();
                     }
-                } else {
+                } else if ("Empleado" == Usuarios.get(i).getTipo()){
+                    System.out.println("Bienvenido " + Usuarios.get(i).getName());
                     Empleado USER = new Empleado(Usuarios.get(i));
                     boolean control = true;
                     while(control){
                         control = USER.Menu();
                     }
-                }                
+                } 
+                
             } 
         }       
     }
