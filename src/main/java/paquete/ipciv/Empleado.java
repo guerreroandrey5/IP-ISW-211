@@ -64,17 +64,8 @@ public class Empleado extends Usuario {
         opt = lee.nextInt();
         switch (opt) {
             case 1:
-                System.out.println("Digite la Cédula del cliente: ");
-                int IDC = lee.nextInt();
-                String name = getNameClient(IDC);
-                String state = "En revisión.";
-                System.out.println("Ingrese el material del mueble ");
-                for (int i = 0; i < Main.Recetas.size(); i++) {
-                    System.out.println((i+1) + Main.Recetas.get(i).getNmueble());
-                }
-                int type = lee.nextInt();
-                Pedido pedido = new Pedido(name, state, type);
-                Main.Pedidos.add(pedido);
+                NPedido();
+                break;
 
             case 2:
                 int cont = 0;
