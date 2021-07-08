@@ -56,7 +56,8 @@ public class Administrador extends Usuario {
 
     public static void LeerPedidos() {
         for (int i = 0; i < Main.Pedidos.size(); i++) {
-                System.out.println(Main.Pedidos.get(i));
+                System.out.println("---------------------------------------------------");
+                System.out.println(Main.Pedidos.get(i).getInfoPedido());
         }
     }
      public static void AdministrarPedidos(){
@@ -64,14 +65,48 @@ public class Administrador extends Usuario {
      }
      
      public static void Pedidos(){
-         for (int i = 0; i < Main.Pedidos.size(); i++) {
-                System.out.println(Main.Pedidos.get(i));
-        }
+         Boolean ciclo = true;
+         while(ciclo) {
+             System.out.println("---------------------------------------------------");
+             for (int i = 0; i < Main.Pedidos.size(); i++) {
+                 System.out.println((i+1)+"- Pedido " + Main.Pedidos.get(i).getID());
+             }
+             System.out.println("---------------------------------------------------");
+             System.out.println("1-Agregar nuevo pedido\n2-Cancelar Pedido\n3-Salir");
+            int o = lee.nextInt();
+            if (o == 1){
+                NPedido();
+            } else if (o == 2) {
+                while (true){
+                    System.out.println("Seleccione el ID del pedido. Los ID estan listados arriba ");
+                    int ID = (lee.nextInt()-1);
+                    System.out.println("---------------------------------------------------");
+                    System.out.println(Main.Pedidos.get(ID).getInfoPedido());
+                    System.out.println("---------------------------------------------------");
+                    System.out.println("1-Cancelar Pedido\n2-Volver");
+                    int opt = lee.nextInt();
+                    if (opt == 1){
+                        System.out.println("Seguro que desea cancelar el pedido " + Main.Pedidos.get(ID).getID() + " Hecho por " + Main.Pedidos.get(ID).getNombre_Cliente() + "?");
+                        System.out.println("1-Cancelar Pedido\n2-Volver");
+                        int opt2 = lee.nextInt();
+                        if (opt2 == 1) {
+                            Main.Pedidos.remove(ID);
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+            } else {
+                ciclo = false;
+            }
+         }
      }
      
      public static void Recetas(){
          for (int i = 0; i < Main.Recetas.size(); i++) {
-                System.out.println(Main.Recetas.get(i));
+                System.out.println("---------------------------------------------------");
+                System.out.println(Main.Recetas.get(i).toString());
         }
      }
      
