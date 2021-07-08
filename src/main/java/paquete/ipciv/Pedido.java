@@ -14,17 +14,17 @@ public class Pedido {
     protected String Nombre_Cliente;
     protected int Tipo_mueble;
     protected String Estado;
-    protected int ID;
+    protected String ID;
     
     public Pedido(){
-    this.ID = 0;
+    this.ID = "";
     this.Nombre_Cliente = "";
     this.Tipo_mueble = 0;
     this.Estado = "";
     }
     
-    public Pedido(String name, String estado, int Tipo){
-    this.ID = 0;
+    public Pedido(String name, String estado, int Tipo, String id){
+    this.ID = id;
     this.Nombre_Cliente = name;
     this.Tipo_mueble = Tipo;
     this.Estado = estado;
@@ -35,8 +35,10 @@ public class Pedido {
     }
 
 
-    public int getTipo_mueble() {
-        return Tipo_mueble;
+    public String getTipo_mueble() {
+        String Mueble;
+        Mueble = Main.Recetas.get((this.Tipo_mueble - 1)).getNmueble();
+        return Mueble;
     }
 
     public String getEstado() {
@@ -44,7 +46,7 @@ public class Pedido {
     }
 
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
