@@ -30,10 +30,10 @@ public class Pedido {
     this.Estado = estado;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Gets & Sets">
     public String getNombre_Cliente() {
         return Nombre_Cliente;
     }
-
 
     public String getTipo_mueble() {
         String Mueble;
@@ -45,12 +45,9 @@ public class Pedido {
         return Estado;
     }
 
-
     public String getID() {
         return ID;
     }
-
-
 
     public String getInfoPedido() {
         String info = "ID pedido:" + getID() + "\n" +
@@ -59,6 +56,7 @@ public class Pedido {
                 "Tipo de mueble: " + getTipo_mueble() + "\n";
         return info;
     }
-
+    
+    //</editor-fold>
     
 }

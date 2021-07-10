@@ -39,6 +39,8 @@ public class Empleado extends Usuario {
         }
         return true;
     }
+        
+        //<editor-fold defaultstate="collapsed" desc="Métodos">
      public static void RegClient() {
         int ID; String nombre, fnac, email, direcc;
         String pass = "";
@@ -89,4 +91,5 @@ public class Empleado extends Usuario {
         }
      }
      
+   //</editor-fold>  
 }

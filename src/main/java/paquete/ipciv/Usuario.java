@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package paquete.ipciv;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
+
 /**
  *
  * @author Cris
@@ -40,16 +40,19 @@ public class Usuario {
         
     }
     
-    
+    //<editor-fold defaultstate="collapsed" desc="Gets & Sets">
     public String getName() {
         return this.Name;   
     }
+    
     public int getID() {
         return this.ID;
     }
+    
     public String getFecha() {
         return this.FechaNacimiento;
     }
+    
     public String getContra() {
         return this.Password;
     }
@@ -61,7 +64,9 @@ public class Usuario {
     public String getCorreo(){
         return this.Correo;
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Métodos">
     public static String getNameClient(int ID){
         String name = "";
         for (int i = 0; i < Main.Usuarios.size(); i++) {
@@ -89,4 +94,6 @@ public class Usuario {
                 Pedido pedido = new Pedido(name, state, type, ID);
                 Main.Pedidos.add(pedido);
     }
+    
+    //</editor-fold>
 }
