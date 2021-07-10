@@ -7,52 +7,54 @@ package paquete.ipciv;
 
 /**
  *
- * @author guerr
+ * @author guerreroandrey5
  */
 public class Receta {
-    protected String nmueble;
-    protected int madera;
-    protected int metal;
-    protected int pintura;
-    protected int clavos;
-    protected int tornillos;   
+    protected String rnmueble;
+    protected int rmadera;
+    protected int rmetal;
+    protected int rpintura;
+    protected int rclavos;
+    protected int rtornillos;   
     
     public Receta(){
-        this.nmueble = "";
-        this.madera = 0;
-        this.metal = 0;
-        this.pintura = 0;
-        this.clavos = 0;
+        this.rnmueble = "";
+        this.rmadera = 0;
+        this.rmetal = 0;
+        this.rpintura = 0;
+        this.rclavos = 0;
    
     }
-    public Receta(String nmueble, int madera, int metal, int pintura, int clavos, int tornillos) {
-        this.nmueble = nmueble;
-        this.madera = madera;
-        this.metal = metal;
-        this.pintura = pintura;
-        this.clavos = clavos;
-        this.tornillos = tornillos;
+    
+    public Receta(String rnmueble, int rmadera, int rmetal, int rpintura, int rclavos, int rtornillos) {
+        this.rnmueble = rnmueble;
+        this.rmadera = rmadera;
+        this.rmetal = rmetal;
+        this.rpintura = rpintura;
+        this.rclavos = rclavos;
+        this.rtornillos = rtornillos;
 
-    }
-    public String getRecetaz(){
-     return    
-               "Nombre del Mueble:" + nmueble
-             + "\nCantidad de Madera: " + madera            
-             + "\nCantidad de Metal: " + metal
-             + "\nCantidad de Pintura: " + pintura 
-             + "\nCantidad de Clavos: " + clavos
-             + "\nCantidad de Tornillos: " + tornillos;}
-
-    public String getNmueble() {
-        return nmueble;
     }
     
+    //<editor-fold defaultstate="collapsed" desc="Gets & Sets">
+    public String getRecetaz(){ //Creo que no se puede usar los gets tan facilmente por como hacemos esto
+     return    
+               "Nombre del Mueble:" + rnmueble
+             + "\nCantidad de Madera: " + rmadera            
+             + "\nCantidad de Metal: " + rmetal
+             + "\nCantidad de Pintura: " + rpintura 
+             + "\nCantidad de Clavos: " + rclavos
+             + "\nCantidad de Tornillos: " + rtornillos;}
 
-
+    public String getNmueble() {
+        return rnmueble;
+    }
+    
+//</editor-fold>
+    
     @Override
     public String toString() {
-        return "Nombre del Mueble: " + nmueble + "\nCantidad de Madera: " + madera + "\nCantidad de Metal: " + metal + "\nCantidad de Pintura: " + pintura + "\nCantidad de Clavos: " + clavos + "\nCantidad de Tornillos: " + tornillos +"\n";
+        return "Nombre del Mueble: " + rnmueble + "\nCantidad de Madera: " + rmadera + "\nCantidad de Metal: " + rmetal + "\nCantidad de Pintura: " + rpintura + "\nCantidad de Clavos: " + rclavos + "\nCantidad de Tornillos: " + rtornillos +"\n";
     }
 
- 
 }

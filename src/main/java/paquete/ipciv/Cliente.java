@@ -7,7 +7,7 @@ package paquete.ipciv;
 
 /**
  *
- * @author guerr
+ * @author guerreroandrey5
  */
 public class Cliente extends Usuario {
     protected String direcc
@@ -15,7 +15,6 @@ public class Cliente extends Usuario {
     public Cliente(int Ced, String Nombre, String Fecha, String Correo, String Tipo, String direcc , String Contrase){       
         super(Ced, Nombre, Fecha, Correo, Tipo, Contrase); 
         this.direcc = direcc;
-
     }
     
     public String getDirection(){
