@@ -42,11 +42,16 @@ public class Pedido {
     }
     
     public int getTipo_muebleIndx() {
-        return this.Tipo_mueble;
+        return (this.Tipo_mueble -1);
     }
 
     public String getEstado() {
         return Estado;
+    }
+    
+    public void setEstado(String state) {
+            this.Estado = state;
+  
     }
 
     public String getID() {

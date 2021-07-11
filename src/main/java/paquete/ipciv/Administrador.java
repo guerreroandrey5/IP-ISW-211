@@ -67,7 +67,47 @@ public class Administrador extends Usuario {
         }
     }
      public static void AdministrarPedidos(){
-         
+         int comp = 0;
+         if (Main.Pedidos.isEmpty()) {
+            System.out.println("                \nNo hay pedidos para visualizar.                   \n");   
+        } else {
+            for (int i = 0; i < Main.Pedidos.size(); i++) {
+                if("En revisión.".equals(Main.Pedidos.get(i).getEstado())){
+                    comp++;
+                    System.out.println("<--------------------------------------------------->");
+                    System.out.println((i+1)+"- Pedido " + Main.Pedidos.get(i).getID());
+                }
+            }
+            System.out.println("<--------------------------------------------------->");
+            if (comp == 0) {
+                System.out.println("                \nNo hay nuevos pedidos para administrar.                   \n");
+            } else {
+                System.out.println("Seleccione el ID del pedido a administrar");
+                int index = (lee.nextInt()-1);
+                System.out.println("\n" + Main.Pedidos.get((index)).getInfoPedido() + "\n");
+                System.out.println("(1) Aprovar\n(2)Rechazar\n(3)Volver");
+                int lop = lee.nextInt();
+                switch (lop) {
+                    case 1:
+                        System.out.println("¿Desea aprovar el pedido?\n (1)Si\n (2)No");
+                        int apv = lee.nextInt();
+                        if (apv == 1) {
+                            Main.Pedidos.get(index).setEstado("Aprovado");
+                        }
+                        break;
+                    case 2:
+                        System.out.println("¿Desea rechazar el pedido?");
+                        int rch = lee.nextInt();
+                        if (rch == 1) {
+                            Main.Pedidos.remove(index);
+                        }
+                        break;
+                        
+                    case 3:
+                        break;
+                }
+            }
+        }
      }
      
      public static void Pedidos(){
@@ -209,9 +249,9 @@ public class Administrador extends Usuario {
                  for (int j = 0; j < Main.Recetas.size(); j++) {
                      if (j == mueble) {
                          madera = madera + Main.Recetas.get(j).getRmadera();
-                         metal = metal + Main.Recetas.get(j).getRmadera();
-                         pintura = pintura + Main.Recetas.get(j).getRmadera();
-                         clavos = clavos + Main.Recetas.get(j).getRmadera();
+                         metal = metal + Main.Recetas.get(j).getRmetal();
+                         pintura = pintura + Main.Recetas.get(j).getRpintura();
+                         clavos = clavos + Main.Recetas.get(j).getRclavos();
                          tornillos = tornillos + Main.Recetas.get(j).getRtornillos();
                      }
                  }
@@ -223,11 +263,11 @@ public class Administrador extends Usuario {
              + "\nCantidad de Pintura necesaria para los pedidos: " + pintura 
              + "\nCantidad de Clavos necesaria para los pedidos: " + clavos
              + "\nCantidad de Tornillos nesearia para los pedidos: " + tornillos);
-         System.out.println("\nCantidad de Madera necesaria disponible: " + invMadera            
-             + "\nCantidad de Metal necesaria disponible: " + invMetal
-             + "\nCantidad de Pintura necesaria disponible: " + invPintura 
-             + "\nCantidad de Clavos necesaria disponible: " + invClavos
-             + "\nCantidad de Tornillos nesearia disponible: " + invTornillos);
+         System.out.println("\nCantidad de Madera disponible: " + invMadera            
+             + "\nCantidad de Metal disponible: " + invMetal
+             + "\nCantidad de Pintura disponible: " + invPintura 
+             + "\nCantidad de Clavos disponible: " + invClavos
+             + "\nCantidad de Tornillos disponible: " + invTornillos + "\n");
             alert(invMadera, madera, "Madera");
             alert(invMetal, metal, "Metal");
             alert(invPintura, pintura, "Pintura");
@@ -249,7 +289,7 @@ public class Administrador extends Usuario {
      public static void alert(int av, int ned, String fur) {
          if (av < ned) {
              System.out.println("\033[31m No hay suficientes materiales");
-             System.out.println("   \033[32m Se necesitan" + (ned - av) + " " + fur);
+             System.out.println("   \033[32m Se reccomienda comprar " + (ned - av) + " de " + fur + " para poder completar los pedidos\n");
          }
      }
      
