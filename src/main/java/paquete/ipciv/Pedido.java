@@ -40,6 +40,10 @@ public class Pedido {
         Mueble = Main.Recetas.get((this.Tipo_mueble - 1)).getNmueble();
         return Mueble;
     }
+    
+    public int getTipo_muebleIndx() {
+        return this.Tipo_mueble;
+    }
 
     public String getEstado() {
         return Estado;

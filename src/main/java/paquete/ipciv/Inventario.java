@@ -41,6 +41,28 @@ public class Inventario {
              + "\nCantidad de Clavos: " + clavos
              + "\nCantidad de Tornillos: " + tornillos;}
 
+    public int getMadera() {
+        return madera;
+    }
+
+    public int getMetal() {
+        return metal;
+    }
+
+    public int getPintura() {
+        return pintura;
+    }
+
+    public int getClavos() {
+        return clavos;
+    }
+
+    public int getTornillos() {
+        return tornillos;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Cantidad de Madera: " + madera + "\nCantidad de Metal: " + metal + "\nCantidad de Pintura: " + pintura + "\nCantidad de Clavos: " + clavos + "\nCantidad de Tornillos: " + tornillos +"\n";

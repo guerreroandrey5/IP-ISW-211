@@ -49,6 +49,26 @@ public class Receta {
     public String getNmueble() {
         return rnmueble;
     }
+
+    public int getRmadera() {
+        return rmadera;
+    }
+
+    public int getRmetal() {
+        return rmetal;
+    }
+
+    public int getRpintura() {
+        return rpintura;
+    }
+
+    public int getRclavos() {
+        return rclavos;
+    }
+
+    public int getRtornillos() {
+        return rtornillos;
+    }
     
 //</editor-fold>
     

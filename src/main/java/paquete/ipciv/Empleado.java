@@ -49,11 +49,11 @@ public class Empleado extends Usuario {
         System.out.println("Digite el nombre completo del cliente (Si desea usar espacios, utlice guiones en lugar de espacios): ");
         nombre = lee.next();
         System.out.println("Digite la fecha de nacimiento del cliente (dd/mm/aaaa): ");
-        fnac = lee.next();
+        fnac = lee.nextLine();
         System.out.println("Digite el correo electrónico del cliente: ");
-        email = lee.next();
+        email = lee.nextLine();
         System.out.println("Digite la dirección del domicilio del cliente: ");
-        direcc = lee.next();
+        direcc = lee.nextLine();
         Cliente newUser = new Cliente(ID, nombre, fnac, email, "Cliente", direcc, pass);
         Main.Usuarios.add(newUser);
      }

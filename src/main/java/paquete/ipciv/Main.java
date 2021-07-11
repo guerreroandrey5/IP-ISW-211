@@ -49,8 +49,8 @@ public class Main {
 //<editor-fold defaultstate="collapsed" desc="Métodos">
     static int valor(){
         int opc;
-        System.out.println("Bienvenido al sistema de la Fábrica de Muebles");
-        System.out.println("Login (1)");
+        System.out.println("\nBienvenido al sistema de la Fábrica de Muebles\n");
+        System.out.println("    Login (1)");
         opc = lee.nextInt();
         return opc;
     }

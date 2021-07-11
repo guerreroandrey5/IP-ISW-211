@@ -89,7 +89,11 @@ public class Usuario {
                 int type = lee.nextInt();
                 String ID = "";
                 if (type == 1) {
-                    ID = "MST" + ((int)(Math.random() * 10) + 1) + (IDC);
+                    ID = "MST" + ((int)(Math.random() * 9) + 1) + (IDC);
+                } else if (type == 2) {
+                    ID = "BG" + ((int)(Math.random() * 9) + 1) + (IDC);
+                } else if (type == 3) {
+                    ID = "EG" + ((int)(Math.random() * 9) + 1) + (IDC);
                 }
                 Pedido pedido = new Pedido(name, state, type, ID);
                 Main.Pedidos.add(pedido);
