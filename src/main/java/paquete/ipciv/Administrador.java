@@ -11,8 +11,8 @@ import java.util.ArrayList;
  *
  * @author Cris
  */
-public class Administrador extends Usuario {
-     
+
+public class Administrador extends Usuario { 
     public Administrador(Usuario User){
        super(User.getID(),User.getName(), User.getFecha(), User.getCorreo(), User.getTipo(), User.getContra());
     }   
@@ -21,12 +21,12 @@ public class Administrador extends Usuario {
     }   
     public boolean Menu(){
         int opt;
-            System.out.println("Leer Pedidos (1)");
-            System.out.println("Aprobar/Rechazar Cartas (2)");
-            System.out.println("Pedidos (3)");
-            System.out.println("Recetas (4)");
-            System.out.println("Consultas (5)");
-            System.out.println("Regresar al inicio de sesión (6)");
+            System.out.println("1-Leer Pedidos");
+            System.out.println("2-Aprobar/Rechazar Cartas");
+            System.out.println("3-Pedidos");
+            System.out.println("4-Recetas");
+            System.out.println("5-Consultas");
+            System.out.println("6-Regresar al inicio de sesión");
             opt = lee.nextInt();
             switch (opt) {
                 case 1:
@@ -85,14 +85,16 @@ public class Administrador extends Usuario {
                 System.out.println("Seleccione el ID del pedido a administrar");
                 int index = (lee.nextInt()-1);
                 System.out.println("\n" + Main.Pedidos.get((index)).getInfoPedido() + "\n");
-                System.out.println("(1) Aprovar\n(2)Rechazar\n(3)Volver");
+                System.out.println("1-Aprobar\n2-Rechazar\n3-Volver");
                 int lop = lee.nextInt();
                 switch (lop) {
                     case 1:
-                        System.out.println("¿Desea aprovar el pedido?\n (1)Si\n (2)No");
+                        System.out.println("¿Esta seguro de querer aprobar el pedido?\n1-Si\n2-No");
                         int apv = lee.nextInt();
-                        if (apv == 1) {
-                            Main.Pedidos.get(index).setEstado("Aprovado");
+                        if (apv == 1) {                           
+                            //Main.Pedidos.get(index).setEstado("Terminado");
+                            //Main.Terminados.add(Main.Pedidos.get(index));                            
+                            Main.Pedidos.get(index).setEstado("Aprobado");                         
                         }
                         break;
                     case 2:
@@ -100,6 +102,13 @@ public class Administrador extends Usuario {
                         int rch = lee.nextInt();
                         if (rch == 1) {
                             Main.Pedidos.remove(index);
+//                            if (Main.Terminados.isEmpty()){
+//                                // :)
+//                            }
+//                            else{
+//                               Main.Terminados.remove(index); 
+//                            }
+//                            
                         }
                         break;
                         
@@ -139,7 +148,7 @@ public class Administrador extends Usuario {
                     System.out.println("1-Cancelar Pedido\n2-Volver");
                     int opt = lee.nextInt();
                     if (opt == 1){
-                        System.out.println("Seguro que desea cancelar el pedido " + Main.Pedidos.get(ID).getID() + " Hecho por " + Main.Pedidos.get(ID).getNombre_Cliente() + "?");
+                        System.out.println("¿Esta seguro de querer cancelar el pedido? " + Main.Pedidos.get(ID).getID() + " Hecho por: " + Main.Pedidos.get(ID).getNombre_Cliente() + "?");
                         System.out.println("1-Cancelar Pedido\n2-Volver");
                         int opt2 = lee.nextInt();
                         if (opt2 == 1) {
@@ -165,16 +174,16 @@ public class Administrador extends Usuario {
      
      public static void Consultas(){
         int opt;
-            System.out.println("Consultar Inventario de Insumos (1)");
-            System.out.println("Consultar Muebles terminados (2)");
-            System.out.println("Volver (3)");
+            System.out.println("1-Consultar Inventario de Insumos");
+            System.out.println("2-Consultar Muebles Terminados");
+            System.out.println("3-Volver");
         opt = lee.nextInt();
         switch (opt) {
             case 1:  
                 String sInv = Main.Inventarios.toString().replace("[", "").replace("]", "");
                 System.out.println(sInv);
                 CompararPM(false);
-                System.out.println("\n (1)Comparar pedidos con materiales disponibles\n (2)Salir");
+                System.out.println("\n1-Comparar pedidos con materiales disponibles\n2-Salir");
                 int ac = lee.nextInt();
                 switch(ac) {
                     case 1:
@@ -189,22 +198,22 @@ public class Administrador extends Usuario {
                 }
                 break;
                 
-            case 2:
-                ArrayList<Pedido> terminados = new ArrayList<Pedido>();
+            case 2:               
+                
                 for (int i = 0; i < Main.Pedidos.size(); i++) {
                     if ("Terminado".equals(Main.Pedidos.get(i).getEstado())){
-                        terminados.add(Main.Pedidos.get(i));
+                        //Main.Terminados.add(Main.Pedidos.get(i));
                     }
                 }
-                if (terminados.isEmpty()) {
+                if (Main.Terminados.isEmpty()) {
                     System.out.println("\n    No hay muebles terminados    \n");
                 } else {
-                    for (int j = 0; j < terminados.size(); j++) {
+                    for (int j = 0; j < Main.Terminados.size(); j++) {
                         System.out.println("<--------------------------------------------------->");
-                        System.out.println(terminados.get(j).getInfoPedido());
+                        System.out.println(Main.Terminados.get(j).getInfoPedido());
                     }
                     System.out.println("<--------------------------------------------------->");
-                    System.out.println("\n (1)Comparar pedidos con materiales disponibles\n (2)Salir");
+                    System.out.println("\n1-Comparar pedidos con materiales disponibles\n2-Salir");
                     int act = lee.nextInt();
                     switch(act) {
                     case 1:
@@ -289,7 +298,7 @@ public class Administrador extends Usuario {
      public static void alert(int av, int ned, String fur) {
          if (av < ned) {
              System.out.println("\033[31m No hay suficientes materiales");
-             System.out.println("   \033[32m Se reccomienda comprar " + (ned - av) + " de " + fur + " para poder completar los pedidos\n");
+             System.out.println("   \033[32m Se recomienda comprar " + (ned - av) + " de " + fur + " para poder completar los pedidos\n");
          }
      }
      

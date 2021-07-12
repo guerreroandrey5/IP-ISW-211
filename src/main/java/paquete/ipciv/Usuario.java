@@ -75,28 +75,33 @@ public class Usuario {
             }
         }
         return name;
+              
     }
-    
     public static void NPedido(){
-        System.out.println("Digite la Cédula del cliente: ");
+                System.out.println("Digite la Cédula del cliente: ");
                 int IDC = lee.nextInt();
-                String name = getNameClient(IDC);
+                String name = getNameClient(IDC);              
+                if (name.equals("")){
+                System.out.println("Ese cliente no se encuentra registrado en el sistema.");            
+                    }
+                else{
                 String state = "En revisión.";
-                System.out.println("Ingrese el tipo de mueble ");
+                System.out.println("Ingrese el tipo de mueble: ");
                 for (int i = 0; i < Main.Recetas.size(); i++) {
                     System.out.println((i+1)+ "-" + Main.Recetas.get(i).getNmueble());
-                }
+                    }
                 int type = lee.nextInt();
                 String ID = "";
                 if (type == 1) {
                     ID = "MST" + ((int)(Math.random() * 9) + 1) + (IDC);
-                } else if (type == 2) {
+                    } else if (type == 2) {
                     ID = "BG" + ((int)(Math.random() * 9) + 1) + (IDC);
-                } else if (type == 3) {
+                    } else if (type == 3) {
                     ID = "EG" + ((int)(Math.random() * 9) + 1) + (IDC);
-                }
+                    }
                 Pedido pedido = new Pedido(name, state, type, ID);
                 Main.Pedidos.add(pedido);
+                }
     }
     
     //</editor-fold>

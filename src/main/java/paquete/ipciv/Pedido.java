@@ -59,7 +59,7 @@ public class Pedido {
     }
 
     public String getInfoPedido() {
-        String info = "ID pedido:" + getID() + "\n" +
+        String info = "ID pedido: " + getID() + "\n" +
                 "Nombre del Cliente: " + getNombre_Cliente() + "\n" +
                 "Estado: " + getEstado() + "\n" +
                 "Tipo de mueble: " + getTipo_mueble() + "\n";
