@@ -5,6 +5,8 @@
  */
 package paquete.ipciv;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Cris
@@ -71,105 +73,80 @@ public class Empleado extends Usuario {
         opt = lee.nextInt();
         switch (opt) {
             case 1:
-                Boolean ciclo = true;
-         while(ciclo) {
-             System.out.println("<--------------------------------------------------->");
-             for (int i = 0; i < Main.Pedidos.size(); i++) {
-                 System.out.println((i+1)+"- Pedido " + Main.Pedidos.get(i).getID());
-             }
-             if(Main.Pedidos.isEmpty()) {
-                 System.out.println("\n       Sin pedidos para visualizar           \n");
-             }
-             System.out.println("<--------------------------------------------------->");
-             System.out.println("1-Agregar nuevo pedido\n2-Salir");
-            int o = lee.nextInt();
-            if (o == 1){
                 NPedido();
-            } else if (o == 2) {               
-                ciclo = false;
-            }
-         }                   
+                break;
             case 2:
-//                int cont = 0;
-//                for (int i = 0; i < Main.Pedidos.size(); i++) {
-//                    if ("Aprobado".equals(Main.Pedidos.get(i).Estado)) {
-//                        cont += 1;
-//                        System.out.print(cont + Main.Pedidos.get(i).getInfoPedido());
-//                    }
-//                }
-                    Administrador.LeerPedidos();
-                    System.out.println("1-Terminar Pedidos\n2-Volver");               
-                    int opts = lee.nextInt();
-                    if (opts == 1){                      
-                        for (int i = 0; i < Main.Pedidos.size(); i++) {
-                        if ("Aprobado".equals(Main.Pedidos.get(i).getEstado())){
-                            String as = Main.Pedidos.get(i).getEstado();
-                            if ( as.equals("En revisión.")){
-                              System.out.println("El Pedido debe ser aprobado antes de que pueda ser terminado.");
-                              break;
+                ArrayList<Pedido> con = new ArrayList<>();
+                    con = LeerPedidos("Aprobado");
+                    int opts;
+                    if (con.isEmpty()) {
+                        System.out.println("1-Terminar Pedidos (No disponible)\n2-Volver");
+                        opts = lee.nextInt();
+                    } else {
+                        System.out.println("1-Terminar Pedidos\n2-Volver");    
+                        opts = lee.nextInt();
+                        if (opts == 1)
+                            System.out.println("Seleccione el ID del pedido a finalizar de la lista anterior");
+                            int index = (lee.nextInt()-1);
+                            System.out.println("\n" + con.get((index)).getInfoPedido() + "\n");
+                            System.out.println("¿Desea inciar la produccion del pedido y finalizarlo?");
+                            System.out.println("1-Finalizar\n2-Volver");
+                            int o = lee.nextInt();
+                            if (o == 1){
+                                int ind =  getIndexArr(con, index); 
+                                Main.Pedidos.get((ind)).setEstado("Terminado");
+                                break;
+                            } else {
+                                break;
                             }
-                            else{
-                              //Main.Terminados.add(Main.Pedidos.get(i));
-                            Main.Pedidos.get(i).setEstado("Terminado");  
-                            }                            
-                            }
-                        }
-                            break;
-                        }                                
+                    }
+                    if (opts == 2){
+                        break;
+                       }                                               
             case 3:
                 break;
         }                  
         }
         
      public static void SendPed(){
-        Boolean ciclo = true;
-         while(ciclo) {
-             System.out.println("<--------------------------------------------------->");
-             for (int i = 0; i < Main.Pedidos.size(); i++) {
-                 System.out.println((i+1)+"- Pedido " + Main.Pedidos.get(i).getID());
-             } 
-             if(Main.Pedidos.isEmpty()) {
-                 System.out.println("\n       Sin pedidos para visualizar           \n");
-             }
-             System.out.println("<--------------------------------------------------->");
-             System.out.println("1-Enviar Pedido\n2-Salir");
-            int o = lee.nextInt();
-            if (o == 1){
-                while (true){
-                    if (Main.Pedidos.isEmpty()) {
-                        System.out.println("\n          \033[31m No hay pedidos para Enviar        \n");
-                        break;
-                    }
+        boolean ciclo = true;
+        ArrayList<Pedido> cond = new ArrayList();
+        int o;
+        while(ciclo) {
+             cond = LeerPedidos("Terminado");
+             if (cond.isEmpty()) {
+                 System.out.println("1-Enviar Pedido (No disponible)\n2-Salir");
+                 o = lee.nextInt();
+                
+            } else {
+                 System.out.println("1-Enviar Pedido\n2-Salir");
+                 o = lee.nextInt();
+                 if (o == 1){
+                    while (true){
                     System.out.println("Seleccione el ID del pedido. Los ID estan listados arriba ");
                     int ID = (lee.nextInt()-1);
                     System.out.println("<--------------------------------------------------->");
-                    System.out.println(Main.Pedidos.get(ID).getInfoPedido());
-                    String as = Main.Pedidos.get(ID).getEstado();
+                    System.out.println(cond.get(ID).getInfoPedido());
                     System.out.println("<--------------------------------------------------->");
                     System.out.println("1-Enviar Pedido\n2-Volver");
                     int opt = lee.nextInt();
-                    if (as.equals("Terminado")){
                       if (opt == 1){
-                        System.out.println("¿Esta seguro de querer enviar el pedido?" + Main.Pedidos.get(ID).getID() + " Hecho por " + Main.Pedidos.get(ID).getNombre_Cliente() + "?");
+                        System.out.println("¿Esta seguro de querer enviar el pedido?" + cond.get(ID).getID() + " Hecho por " + cond.get(ID).getNombre_Cliente() + "?");
                         System.out.println("1-Enviar Pedido\n2-Volver");
-                        System.out.println("Pedido Enviado a su destino!");
                         int opt2 = lee.nextInt();
                         if (opt2 == 1) {
-                            Main.Pedidos.remove(ID);
+                            int ind =  getIndexArr(cond, ID);                         
+                            System.out.println("Pedido Enviado a su destino!");
+                            Main.Pedidos.get(ind).setEstado("Completado");
                             break;
                             }
-                            } 
-                            else {
+                       } else {
                             break;
                             }  
                     }
-                    else {
-                       System.out.println("Este pedido no puede ser enviado todavía, solicite ayuda al Administrador"); 
-                       break;
                     }     
                 }
-                
-            } else if (o == 2) { 
+             if (o == 2) { 
                 ciclo = false;
                 }             
          }

@@ -23,7 +23,7 @@ public class Main {
     protected static ArrayList<Receta> Recetas = new ArrayList<Receta>();
     protected static ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
     protected static ArrayList<Inventario> Inventarios = new ArrayList<Inventario>();
-    protected static ArrayList<Pedido> Terminados = new ArrayList<Pedido>(); 
+    
 //</editor-fold>
     public static void main(String[] args) {
         // TODO code application logic here
@@ -52,7 +52,7 @@ public class Main {
 //<editor-fold defaultstate="collapsed" desc="Métodos">
     static int valor(){
         int opc;
-        System.out.println("\nBienvenido al sistema de la Fábrica de Muebles\n");
+        System.out.println("\n  Bienvenido al sistema de la Fábrica de Muebles\n");
         System.out.println("    1-Login    ");
         System.out.println("    2-Mensaje Motivacional    ");
         opc = lee.nextInt();
@@ -69,7 +69,7 @@ public class Main {
         for (int i = 0; i <Usuarios.size() ; i++) {
             if (Usuarios.get(i).getID() == IDinput && Usuarios.get(i).getContra().equals(passinput)) {
                 if ("Admin" == Usuarios.get(i).getTipo()){
-                    System.out.println("Bienvenido Administrado " + Usuarios.get(i).getName());
+                    System.out.println("Bienvenido Administrador " + Usuarios.get(i).getName());
                     Administrador USER = new Administrador(Usuarios.get(i));
                     boolean control = true;
                     while(control){

@@ -104,5 +104,55 @@ public class Usuario {
                 }
     }
     
+    public static ArrayList<Pedido> LeerPedidos(String term) {
+        int com = 0;
+        ArrayList<Pedido> data = new ArrayList();
+        if (Main.Pedidos.isEmpty()) {} else {
+            System.out.println("<--------------------------------------------------->");
+            for (int i = 0; i < Main.Pedidos.size(); i++) {
+                if (term != "" && term != "id") {
+                    if((term).equals(Main.Pedidos.get(i).getEstado())){
+                    com++;
+                    System.out.println((com)+"- Pedido " + Main.Pedidos.get(i).getID());
+                    data.add(Main.Pedidos.get(i));
+                    System.out.println("<--------------------------------------------------->");
+                    }
+                } else if (("id").equals(term)) {
+                    com++;
+                    System.out.println((com)+"- Pedido " + Main.Pedidos.get(i).getID());
+                    data.add(Main.Pedidos.get(i));
+                    System.out.println("<--------------------------------------------------->");                
+               
+                } else {
+                    System.out.println(Main.Pedidos.get(i).getInfoPedido());
+                    com++;
+                    data.add(Main.Pedidos.get(i));
+                    System.out.println("<--------------------------------------------------->");
+                }
+            }
+        }
+        if (com == 0) {
+            System.out.println("<--------------------------------------------------->");
+            System.out.println("                \nNo hay pedidos para visualizar.                   \n");
+            System.out.println("<--------------------------------------------------->");
+        }
+        return data;
+    }
+    
+    public static int getIndexArr(ArrayList<Pedido> list2, int index) {
+        ArrayList<Pedido> list1 = Main.Pedidos;
+        int ind = 0;
+        for (int i = 0; i < Main.Pedidos.size(); i++) {
+            String infoID = Main.Pedidos.get(i).getID();
+            for (int j = 0; j < list2.size(); j++) {
+                if((infoID).equals(list2.get(index).getID())){
+                    ind = i;
+                    break;
+                }
+            }
+        }
+        return ind;
+    }
+    
     //</editor-fold>
 }
