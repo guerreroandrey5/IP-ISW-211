@@ -37,14 +37,6 @@ public class Receta {
     }
     
     //<editor-fold defaultstate="collapsed" desc="Gets & Sets">
-    public String getRecetaz(){ //Creo que no se puede usar los gets tan facilmente por como hacemos esto
-     return    
-               "Nombre del Mueble:" + rnmueble
-             + "\nCantidad de Madera: " + rmadera            
-             + "\nCantidad de Metal: " + rmetal
-             + "\nCantidad de Pintura: " + rpintura 
-             + "\nCantidad de Clavos: " + rclavos
-             + "\nCantidad de Tornillos: " + rtornillos;}
 
     public String getNmueble() {
         return rnmueble;

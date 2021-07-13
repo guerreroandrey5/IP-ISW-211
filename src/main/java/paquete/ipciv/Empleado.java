@@ -53,7 +53,9 @@ public class Empleado extends Usuario {
         String pass = "";
         System.out.println("Digite la Cédula del cliente: ");
         ID = lee.nextInt();
-        System.out.println("Digite el nombre completo del cliente (Si desea utilizar espacios, utlice guiones en lugar de espacios): ");
+        String name = getNameClient(ID);              
+        if (name.equals("")){
+              System.out.println("Digite el nombre completo del cliente (Si desea utilizar espacios, utlice guiones en lugar de espacios): ");
         nombre = lee.next();
         System.out.println("Digite la fecha de nacimiento del cliente (dd/mm/aaaa): ");
         fnac = lee.next();
@@ -62,7 +64,11 @@ public class Empleado extends Usuario {
         System.out.println("Digite la dirección del domicilio del cliente(Si desea utilizar espacios, utlice guiones en lugar de espacios): ");
         direcc = lee.next();
         Cliente newUser = new Cliente(ID, nombre, fnac, email, "Cliente", direcc, pass);
-        Main.Usuarios.add(newUser);
+        Main.Usuarios.add(newUser);            
+        } else {
+            System.out.println("El cliente ya se encuentra registrado en el sistema.");
+        }
+        
      }
      
      public static void ReaFinPed(){

@@ -12,13 +12,13 @@ import java.util.*;
  */
 public class Usuario {
     public static Scanner lee = new Scanner(System.in);  
-    protected int ID;
-    protected String Name;
-    protected String FechaNacimiento;
-    protected String Correo;
-    protected String Type;
-    protected String Password;
-    protected ArrayList<Pedido> APedidos;
+    private int ID;
+    private String Name;
+    private String FechaNacimiento;
+    private String Correo;
+    private String Type;
+    private String Password;
+    private ArrayList<Pedido> APedidos;
     
     public Usuario(){
         this.ID = 0;
@@ -70,8 +70,8 @@ public class Usuario {
     public static String getNameClient(int ID){
         String name = "";
         for (int i = 0; i < Main.Usuarios.size(); i++) {
-            if (ID == Main.Usuarios.get(i).ID ){
-                name = Main.Usuarios.get(i).Name;
+            if (ID == Main.Usuarios.get(i).getID() ){
+                name = Main.Usuarios.get(i).getName();
             }
         }
         return name;

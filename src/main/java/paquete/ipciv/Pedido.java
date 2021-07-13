@@ -64,8 +64,7 @@ public class Pedido {
                 "Estado: " + getEstado() + "\n" +
                 "Tipo de mueble: " + getTipo_mueble() + "\n";
         return info;
-    }
-    
+    }  
     //</editor-fold>
     
 }

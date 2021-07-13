@@ -23,7 +23,7 @@ public class Cliente extends Usuario {
 
     @Override
     public String toString() {
-        return "Cédula: " + ID + ", Nombre: " + Name + ", Fecha de Nacimiento: " + FechaNacimiento + ", Email: " + Correo + ", Dirección de Domicilio: " + direcc; 
+        return "Cédula: " + getID() + ", Nombre: " + getName() + ", Fecha de Nacimiento: " + getFecha() + ", Email: " + getCorreo() + ", Dirección de Domicilio: " + getDirection(); 
     }
     
 }

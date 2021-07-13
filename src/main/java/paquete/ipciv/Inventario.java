@@ -33,13 +33,6 @@ public class Inventario {
         this.tornillos = tornillos;
     }
     //<editor-fold defaultstate="collapsed" desc="Métodos">
-    public String getInv(){
-     return    
-               "\nCantidad de Madera: " + madera            
-             + "\nCantidad de Metal: " + metal
-             + "\nCantidad de Pintura: " + pintura 
-             + "\nCantidad de Clavos: " + clavos
-             + "\nCantidad de Tornillos: " + tornillos;}
 
     public int getMadera() {
         return madera;
