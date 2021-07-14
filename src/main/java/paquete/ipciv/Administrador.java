@@ -183,6 +183,7 @@ public class Administrador extends Usuario {
      }
      
      public static void CompararPM(boolean condition){
+        int[] receta;
         int madera = 0;
         int metal = 0;
         int pintura = 0;
@@ -190,18 +191,13 @@ public class Administrador extends Usuario {
         int tornillos = 0;
         int[] inventario = new int[5];
         inventario = Main.newInv.getInventearioNum();
-        int invMadera = inventario[0];
-        int invMetal = inventario[1];
-        int invPintura = inventario[2];
-        int invClavos = inventario[3];
-        int invTornillos = inventario[4];
         if(condition) {
          for (int i = 0; i < Main.Pedidos.size(); i++) {
              if ("En revisión.".equals(Main.Pedidos.get(i).getEstado()) || "Aprobado".equals(Main.Pedidos.get(i).getEstado())) {
                  int mueble = Main.Pedidos.get(i).getTipo_muebleIndx();
                  for (int j = 0; j < Main.Recetas.size(); j++) {
                      if (j == mueble) {
-                        madera = madera + Main.Recetas.get(j).getRmadera();
+                         madera = madera + Main.Recetas.get(j).getRmadera();
                          metal = metal + Main.Recetas.get(j).getRmetal();
                          pintura = pintura + Main.Recetas.get(j).getRpintura();
                          clavos = clavos + Main.Recetas.get(j).getRclavos();
@@ -210,27 +206,45 @@ public class Administrador extends Usuario {
                  }
              }
          }
-         
-         System.out.println("\nCantidad de Madera necesaria para los pedidos: " + madera            
-             + "\nCantidad de Metal necesaria para los pedidos: " + metal
-             + "\nCantidad de Pintura necesaria para los pedidos: " + pintura 
-             + "\nCantidad de Clavos necesaria para los pedidos: " + clavos
-             + "\nCantidad de Tornillos nesearia para los pedidos: " + tornillos);
-         System.out.println("\nCantidad de Madera disponible: " + invMadera            
-             + "\nCantidad de Metal disponible: " + invMetal
-             + "\nCantidad de Pintura disponible: " + invPintura 
-             + "\nCantidad de Clavos disponible: " + invClavos
-             + "\nCantidad de Tornillos disponible: " + invTornillos + "\n");
-            alert(invMadera, madera, "Madera");
-            alert(invMetal, metal, "Metal");
-            alert(invPintura, pintura, "Pintura");
-            alert(invClavos, clavos, "Clavos");
-            alert(invTornillos, tornillos, "Tornillos");
+            receta = new int[] {madera,metal,pintura,clavos,tornillos};
+            for (int i = 0; i < 5; i++) {
+                String mueble = "";
+                switch(i){
+                    case 0:
+                        mueble = "Madera";
+                        break;
+                    
+                    case 1:
+                        mueble = "Metal";
+                        break;
+                        
+                        
+                    
+                    case 2:
+                        mueble = "Pintura";
+                        break;
+                        
+                    
+                    case 3:
+                        mueble = "Clavos";
+                        break;
+                        
+                        
+                    
+                    case 4:
+                        mueble = "Tornillos";
+                        break;
+            }
+                System.out.println("----------------> " + mueble);
+                System.out.println("\nCantidad de " + mueble +" necesaria para los pedidos: " + receta[i]);
+                System.out.println("Cantidad de "+ mueble +" disponible: " + inventario[i] + "\n");
+                alert(inventario[i], receta[i], mueble);
+            }
             
         } else {
             
             for (int i = 0; i < Main.Recetas.size(); i++) {
-             int[] receta = {Main.Recetas.get(i).getRmadera(), Main.Recetas.get(i).getRmetal(), Main.Recetas.get(i).getRpintura(), Main.Recetas.get(i).getRclavos(), Main.Recetas.get(i).getRtornillos()};
+             receta = Main.Recetas.get(i).getRecetaNum();
              String mueble = Main.Recetas.get(i).getNmueble();
              cantM(inventario, receta, mueble);
              }
