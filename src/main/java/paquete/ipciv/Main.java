@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paquete.ipciv;
 
 import java.util.*;
+import static paquete.ipciv.Usuario.getNameClient;
 
 /**
  *
@@ -14,10 +10,9 @@ import java.util.*;
 public class Main {
 
     /**
-     * @param args the command line arguments
+     * Estos Arrays tienen la funcion de almacenar a los Usuarios, recetas, pedidos y clientes del sistema.
      */
 //<editor-fold defaultstate="collapsed" desc="ArrayLists">
-    protected static Scanner lee = new Scanner(System.in);
     protected static ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
     protected static ArrayList<Pedido> Pedidos = new ArrayList<Pedido>();
     protected static ArrayList<Receta> Recetas = new ArrayList<Receta>();
@@ -25,25 +20,41 @@ public class Main {
     protected static Inventario newInv;
     
 //</editor-fold>
+    /**
+     * Un scanner para leer los valores que ingresa el usuario
+     */
+    protected static Scanner lee = new Scanner(System.in);
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // TODO code application logic here
          Main.fload();
          Main.menu();        
     }
-    
+    /*
+    * El menú principal del sistema tiene 3 opciones, el Login, el Registro y
+    * una frase motivacional para los trabajadores. 
+    */
     static void menu(){
         while (true) {
         int opc = Main.valor();
         switch (opc)
         {
-        case 1:
+            case 1:
             Main.login();            
             break;
             
             case 2:
-            System.out.println("Hoy será un día maravilloso!");
-            
+            System.out.println("Hoy será un día maravilloso!");         
             break;
+            
+            case 3:
+            Main.RegEmpl();
+            break;
+            
         default:
         }            
         }
@@ -54,11 +65,15 @@ public class Main {
         int opc;
         System.out.println("\n  Bienvenido al sistema de la Fábrica de Muebles\n");
         System.out.println("    1-Login    ");
-        System.out.println("    2-Mensaje Motivacional    ");
+        System.out.println("    2-Registro    ");
+        System.out.println("    3-Mensaje Motivacional    ");
         opc = lee.nextInt();
         return opc;
     }
-    
+    /*
+    * El metodo login realiza un compararcion en el Array de usuarios y verifica
+    * si el usuario y contraseña corresponder con los almacenados.
+    */    
     static void login(){
     int IDinput; 
     String passinput;
@@ -88,6 +103,37 @@ public class Main {
         }       
     }
     
+    /**
+     * El metodo Registro, al ingresar el valor de "ID" el sistema verifica si
+     * ese "ID" ya existe en el sistema, en caso de encontrarlo, devuelve un
+     * error, en caso de no existir el registro continua normalmente.
+     */
+    public static void RegEmpl() {
+        int ID; String nombre, fnac, email, pass;
+        System.out.println("Digite su Cédula: ");
+        ID = lee.nextInt();
+        String name = getNameClient(ID);              
+        if (name.equals("")){
+              System.out.println("Digite su nombre completo (Si desea utilizar espacios, utlice guiones en lugar de espacios): ");
+        nombre = lee.next();
+        System.out.println("Digite su fecha de nacimiento (dd/mm/aaaa): ");
+        fnac = lee.next();
+        System.out.println("Digite su correo electrónico : ");
+        email = lee.next();
+        System.out.println("Digite una contraseña: ");
+        pass = lee.next();
+        Usuario newUser = new Usuario(ID, nombre, fnac, email, "Empleado", pass);
+        Main.Usuarios.add(newUser);            
+        } else {
+            System.out.println("El Empleado ya se encuentra registrado en el sistema.");
+        }
+        
+     }
+    /**
+     * El metodo FirstLoad carga algunos datos en elos Arrays para su
+     * funcionamiento, carga los datos para el inventario de un random, el admin
+     * un usuario y un cliente.
+     */
     static void fload(){
         
         int n1 = (int) (Math.random()*150+45);
