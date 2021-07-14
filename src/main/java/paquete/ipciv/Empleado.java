@@ -91,24 +91,34 @@ public class Empleado extends Usuario {
                     } else {
                         System.out.println("1-Terminar Pedidos\n2-Volver");    
                         opts = lee.nextInt();
-                        if (opts == 1)
-                            System.out.println("Seleccione el ID del pedido a finalizar de la lista anterior");
+                        boolean act;
+                        if (opts == 1) {
+                        System.out.println("Seleccione el ID del pedido a finalizar de la lista anterior");
                             int index = (lee.nextInt()-1);
                             System.out.println("\n" + con.get((index)).getInfoPedido() + "\n");
                             System.out.println("¿Desea inciar la produccion del pedido y finalizarlo?");
                             System.out.println("1-Finalizar\n2-Volver");
                             int o = lee.nextInt();
                             if (o == 1){
-                                int ind =  getIndexArr(con, index); 
-                                Main.Pedidos.get((ind)).setEstado("Terminado");
+                                    int ind = con.get((index)).getTipo_muebleIndx();
+                                    act = compararINV(ind);
+                                    if (act == true) {
+                                        int indx =  getIndexArr(con, index); 
+                                        Main.newInv.restarInv(Main.Recetas.get(ind).getRecetaNum());
+                                        Main.Pedidos.get((indx)).setEstado("Terminado");
+                                    } else {
+                                        break;
+                                    }
                                 break;
                             } else {
                                 break;
                             }
-                    }
-                    if (opts == 2){
+                        } else {
                         break;
-                       }                                               
+                       }    
+                            
+                    }
+                                                               
             case 3:
                 break;
         }                  
@@ -160,7 +170,7 @@ public class Empleado extends Usuario {
      
      public static void PrintEti(){
         for(int i = 0; i < Main.Pedidos.size() ; i++) {
-            if("Completado".equals(Main.Pedidos.get(i).Estado)){
+            if("Completado".equals(Main.Pedidos.get(i).getEstado())){
                 Main.Pedidos.get(i).getInfoPedido();
             }
         }

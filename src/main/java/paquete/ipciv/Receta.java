@@ -10,12 +10,12 @@ package paquete.ipciv;
  * @author guerreroandrey5
  */
 public class Receta {
-    protected String rnmueble;
-    protected int rmadera;
-    protected int rmetal;
-    protected int rpintura;
-    protected int rclavos;
-    protected int rtornillos;   
+    private String rnmueble;
+    private int rmadera;
+    private int rmetal;
+    private int rpintura;
+    private int rclavos;
+    private int rtornillos;   
     
     public Receta(){
         this.rnmueble = "";
@@ -60,6 +60,11 @@ public class Receta {
 
     public int getRtornillos() {
         return rtornillos;
+    }
+    
+    public int[] getRecetaNum() {
+        int[] materiales = new int[] {this.rmadera ,this.rmetal,this.rpintura,this.rclavos,this.rtornillos};
+        return materiales;
     }
     
 //</editor-fold>

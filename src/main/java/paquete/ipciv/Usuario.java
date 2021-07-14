@@ -154,5 +154,69 @@ public class Usuario {
         return ind;
     }
     
+    public static boolean compararINV(int index){
+        boolean condition = true;
+        boolean bypass = true;
+        int madera = 0, metal = 0, pintura = 0, clavos = 0, tornillos = 0;
+        for (int j = 0; j < Main.Recetas.size(); j++) {
+                     if (j == index) {
+                         madera =  Main.Recetas.get(j).getRmadera();
+                         metal =  Main.Recetas.get(j).getRmetal();
+                         pintura =  Main.Recetas.get(j).getRpintura();
+                         clavos =  Main.Recetas.get(j).getRclavos();
+                         tornillos = Main.Recetas.get(j).getRtornillos();
+                     }
+                 }
+        int[] inventario = new int[5];
+        inventario = Main.newInv.getInventearioNum();
+        int[] receta = new int[] {madera,metal,pintura,clavos,tornillos};
+        for (int i = 0; i < inventario.length; i++) {
+            String mueble = "";
+            switch(i){
+                    case 0:
+                        mueble = "Madera";
+                        break;
+                    
+                    case 1:
+                        mueble = "Metal";
+                        break;
+                        
+                        
+                    
+                    case 2:
+                        mueble = "Pintura";
+                        break;
+                        
+                    
+                    case 3:
+                        mueble = "Clavos";
+                        break;
+                        
+                        
+                    
+                    case 4:
+                        mueble = "Tornillos";
+                        break;
+            }
+            if (condition == false && bypass == true) {
+                bypass = condition;
+            }
+            condition = alert(inventario[i], receta[i], mueble);
+            
+        }
+        return bypass;
+    
+    }
+    
+         public static boolean alert(int av, int ned, String fur) {
+         if (av < ned) {
+             System.out.println("\033[31m No hay suficientes materiales");
+             System.out.println("   \033[32m Se recomienda comprar " + (ned - av) + " de " + fur + " para poder completar los pedidos\n");
+             return false;
+         } 
+         return true;
+     }
+     
+    
     //</editor-fold>
 }

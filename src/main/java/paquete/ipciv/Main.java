@@ -22,7 +22,7 @@ public class Main {
     protected static ArrayList<Pedido> Pedidos = new ArrayList<Pedido>();
     protected static ArrayList<Receta> Recetas = new ArrayList<Receta>();
     protected static ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
-    protected static ArrayList<Inventario> Inventarios = new ArrayList<Inventario>();
+    protected static Inventario newInv;
     
 //</editor-fold>
     public static void main(String[] args) {
@@ -90,11 +90,11 @@ public class Main {
     
     static void fload(){
         
-        int n1 = (int) (Math.random()*300+0);
-        int n2 = (int) (Math.random()*300+0);
-        int n3 = (int) (Math.random()*300+0);
-        int n4 = (int) (Math.random()*300+0);
-        int n5 = (int) (Math.random()*300+0);
+        int n1 = (int) (Math.random()*150+45);
+        int n2 = (int) (Math.random()*150+43);
+        int n3 = (int) (Math.random()*150+40);
+        int n4 = (int) (Math.random()*150+46);
+        int n5 = (int) (Math.random()*150+44);
         
         Administrador newUserad = new Administrador(23, "Pedro", "06/11/2002", "admin@mueblesitos.siuuu", "Admin", "123");
         Empleado newUserem = new Empleado(20, "Esteban", "20/06/2000", "worker@mueblesitos.siuuu", "Empleado", "13");
@@ -102,14 +102,13 @@ public class Main {
         Receta newRecipe1 = new Receta("Mesita Gamer", /*Madera*/10, /*Metal*/0, /*Pintura*/20, /*Clavos*/10, /*Tornillos*/0);
         Receta newRecipe2 = new Receta("Banquito de Metal Reforzado Gamer", /*Madera*/0, /*Metal*/20, /*Pintura*/15, /*Clavos*/0, /*Tornillos*/20);
         Receta newRecipe3 = new Receta("Estantería Gamer", /*Madera*/10, /*Metal*/0, /*Pintura*/10, /*Clavos*/8, /*Tornillos*/0);
-        Inventario newInv = new Inventario(/*Madera*/n1, /*Metal*/n2, /*Pintura*/n3, /*Clavos*/n4, /*Tornillos*/n5);
+        newInv = new Inventario(/*Madera*/n1, /*Metal*/n2, /*Pintura*/n3, /*Clavos*/n4, /*Tornillos*/n5);
         Usuarios.add(newUserad); 
         Usuarios.add(newUsercl);
         Usuarios.add(newUserem);
         Recetas.add(newRecipe1); 
         Recetas.add(newRecipe2);
         Recetas.add(newRecipe3);
-        Inventarios.add(newInv);
     }
     
     //</editor-fold>

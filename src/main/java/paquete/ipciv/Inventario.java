@@ -11,11 +11,11 @@ package paquete.ipciv;
  */
 
 public class Inventario {
-    protected int madera;
-    protected int metal;
-    protected int pintura;
-    protected int clavos;
-    protected int tornillos;
+    private int madera;
+    private int metal;
+    private int pintura;
+    private int clavos;
+    private int tornillos;
     
     public Inventario(){       
         this.madera = 0;
@@ -54,7 +54,18 @@ public class Inventario {
         return tornillos;
     }
 
+    public int[] getInventearioNum() {
+        int[] materiales = new int[] {this.madera ,this.metal,this.pintura,this.clavos,this.tornillos};
+        return materiales;
+    }
     
+    public void restarInv(int[] recetaM){
+        this.madera = this.madera - recetaM[0];
+        this.metal = this.metal - recetaM[1];
+        this.pintura = this.pintura - recetaM[2];
+        this.clavos = this.clavos - recetaM[3];
+        this.tornillos = this.tornillos - recetaM[4];
+    }
     
     @Override
     public String toString() {

@@ -11,9 +11,9 @@ import java.util.Scanner;
  */
 public class Pedido {
     public static Scanner leer = new Scanner(System.in);
-    protected String Nombre_Cliente;
-    protected int Tipo_mueble;
-    protected String Estado;
+    private String Nombre_Cliente;
+    private int Tipo_mueble;
+    private String Estado;
     protected String ID;
     
     public Pedido(){

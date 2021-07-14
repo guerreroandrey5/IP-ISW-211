@@ -31,8 +31,8 @@ public class Administrador extends Usuario {
             switch (opt) {
                 case 1:
                     LeerPedidos("");
-                    
                     break;
+                    
                 case 2:
                     AdministrarPedidos();
                     
@@ -61,7 +61,10 @@ public class Administrador extends Usuario {
          ArrayList<Pedido> comp = LeerPedidos("En revisión.");
             if (comp.isEmpty()) {} else {
                 System.out.println("Seleccione el ID del pedido a administrar");
-                int index = (lee.nextInt()-1);
+                int index = lee.nextInt();
+                if (index > 0) {
+                    index = index -1;
+                }
                 System.out.println("\n" + comp.get((index)).getInfoPedido() + "\n");
                 System.out.println("1-Aprobar\n2-Rechazar\n3-Volver");
                 int lop = lee.nextInt();
@@ -146,7 +149,7 @@ public class Administrador extends Usuario {
         opt = lee.nextInt();
         switch (opt) {
             case 1:  
-                String sInv = Main.Inventarios.toString().replace("[", "").replace("]", "");
+                String sInv = Main.newInv.toString();
                 System.out.println(sInv);
                 CompararPM(false);
                 System.out.println("\n1-Comparar pedidos con materiales disponibles\n2-Salir");
@@ -185,25 +188,20 @@ public class Administrador extends Usuario {
         int pintura = 0;
         int clavos = 0;
         int tornillos = 0;
-        int invMadera = 0;
-        int invMetal = 0;
-        int invPintura = 0;
-        int invClavos = 0;
-        int invTornillos = 0;
-        for (int k = 0; k < Main.Inventarios.size(); k++) {
-             invMadera = invMadera + Main.Inventarios.get(k).getMadera();
-             invMetal = invMetal + Main.Inventarios.get(k).getMetal();
-             invPintura = invPintura + Main.Inventarios.get(k).getPintura();
-             invClavos = invClavos + Main.Inventarios.get(k).getClavos();
-             invTornillos = invTornillos + Main.Inventarios.get(k).getTornillos();
-         }
+        int[] inventario = new int[5];
+        inventario = Main.newInv.getInventearioNum();
+        int invMadera = inventario[0];
+        int invMetal = inventario[1];
+        int invPintura = inventario[2];
+        int invClavos = inventario[3];
+        int invTornillos = inventario[4];
         if(condition) {
          for (int i = 0; i < Main.Pedidos.size(); i++) {
-             if ("En revisión.".equals(Main.Pedidos.get(i).getEstado())) {
+             if ("En revisión.".equals(Main.Pedidos.get(i).getEstado()) || "Aprobado".equals(Main.Pedidos.get(i).getEstado())) {
                  int mueble = Main.Pedidos.get(i).getTipo_muebleIndx();
                  for (int j = 0; j < Main.Recetas.size(); j++) {
                      if (j == mueble) {
-                         madera = madera + Main.Recetas.get(j).getRmadera();
+                        madera = madera + Main.Recetas.get(j).getRmadera();
                          metal = metal + Main.Recetas.get(j).getRmetal();
                          pintura = pintura + Main.Recetas.get(j).getRpintura();
                          clavos = clavos + Main.Recetas.get(j).getRclavos();
@@ -232,7 +230,6 @@ public class Administrador extends Usuario {
         } else {
             
             for (int i = 0; i < Main.Recetas.size(); i++) {
-             int[] inventario = {invMadera, invMetal, invPintura, invClavos, invTornillos};
              int[] receta = {Main.Recetas.get(i).getRmadera(), Main.Recetas.get(i).getRmetal(), Main.Recetas.get(i).getRpintura(), Main.Recetas.get(i).getRclavos(), Main.Recetas.get(i).getRtornillos()};
              String mueble = Main.Recetas.get(i).getNmueble();
              cantM(inventario, receta, mueble);
@@ -240,13 +237,7 @@ public class Administrador extends Usuario {
         }
          
     }
-     
-     public static void alert(int av, int ned, String fur) {
-         if (av < ned) {
-             System.out.println("\033[31m No hay suficientes materiales");
-             System.out.println("   \033[32m Se recomienda comprar " + (ned - av) + " de " + fur + " para poder completar los pedidos\n");
-         }
-     }
+   
      
      public static void cantM(int[] av, int[] ned, String mueble) {
          int cantidad = 0;
