@@ -16,7 +16,6 @@ public class Main {
     protected static ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
     protected static ArrayList<Pedido> Pedidos = new ArrayList<Pedido>();
     protected static ArrayList<Receta> Recetas = new ArrayList<Receta>();
-    protected static ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
     protected static Inventario newInv;
     
 //</editor-fold>

@@ -67,6 +67,8 @@ public class Usuario {
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Métodos">
+    
+    /* Funcion para obtener el nombre del cliente */
     public static String getNameClient(int ID){
         String name = "";
         for (int i = 0; i < Main.Usuarios.size(); i++) {
@@ -77,11 +79,29 @@ public class Usuario {
         return name;
               
     }
+    
+    /* Permite generar la etiquete con la informacion del cliente */
+    public static String getEtiquetaCliente(int ID){
+        String mensaje = "";
+        for (int i = 0; i < Main.Usuarios.size(); i++) {
+            if (ID == Main.Usuarios.get(i).getID() ){
+                Cliente Usuario = new Cliente( (Cliente) Main.Usuarios.get(i));
+                mensaje = Usuario.getEtiqueta();
+            }
+        }
+        return mensaje;
+              
+    }
+    
+    
+    /* Permite crear pedidos tanto por parte del admun como de los empleados */
     public static void NPedido(){
                 System.out.println("Digite la Cédula del cliente: ");
                 int IDC = lee.nextInt();
-                String name = getNameClient(IDC);              
-                if (name.equals("")){
+                String name = getNameClient(IDC);
+                boolean PC = true;
+                PC = checkUser(IDC);
+                if (name.equals("") || !PC){
                 System.out.println("Ese cliente no se encuentra registrado en el sistema.");            
                     }
                 else{
@@ -99,11 +119,23 @@ public class Usuario {
                     } else if (type == 3) {
                     ID = "EG" + ((int)(Math.random() * 9) + 1) + (IDC);
                     }
-                Pedido pedido = new Pedido(name, state, type, ID);
+                Pedido pedido = new Pedido(IDC, state, type, ID);
                 Main.Pedidos.add(pedido);
                 }
     }
     
+    
+    /* Permite comprobar si el pedido esta siendo realizado por un cliente existentte */
+    public static boolean checkUser(int ID) {
+            for (int i = 0; i < Main.Usuarios.size(); i++) {
+            if (ID == Main.Usuarios.get(i).getID() && !("Cliente").equals(Main.Usuarios.get(i).getTipo())) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /* Permite visualizar los pedidos dentro del array Pedidos, se divide en tres categorias que difieren de la situacion */
     public static ArrayList<Pedido> LeerPedidos(String term) {
         int com = 0;
         ArrayList<Pedido> data = new ArrayList();
@@ -118,11 +150,12 @@ public class Usuario {
                     System.out.println("<--------------------------------------------------->");
                     }
                 } else if (("id").equals(term)) {
+                    if(!("Completado").equals(Main.Pedidos.get(i).getEstado())) {
                     com++;
                     System.out.println((com)+"- Pedido " + Main.Pedidos.get(i).getID());
                     data.add(Main.Pedidos.get(i));
                     System.out.println("<--------------------------------------------------->");                
-               
+                    }
                 } else {
                     System.out.println(Main.Pedidos.get(i).getInfoPedido());
                     com++;
@@ -139,6 +172,8 @@ public class Usuario {
         return data;
     }
     
+    
+    /* Obtiene en indice del pedido que se esta editando */
     public static int getIndexArr(ArrayList<Pedido> list2, int index) {
         ArrayList<Pedido> list1 = Main.Pedidos;
         int ind = 0;
@@ -154,6 +189,8 @@ public class Usuario {
         return ind;
     }
     
+    
+    /* Permite comparar los materiales de la receta con los disponibles y alerta al empleado si es capaz de inciar la construccion del mueble o no */
     public static boolean compararINV(int index){
         boolean condition = true;
         boolean bypass = true;
@@ -208,6 +245,7 @@ public class Usuario {
     
     }
     
+    /* Funcion que alerta a los usuario sobre la necesidad de materiales*/
          public static boolean alert(int av, int ned, String fur) {
          if (av < ned) {
              System.out.println("\033[31m No hay suficientes materiales");

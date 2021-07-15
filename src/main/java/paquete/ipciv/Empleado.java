@@ -48,6 +48,8 @@ public class Empleado extends Usuario {
     }
         
         //<editor-fold defaultstate="collapsed" desc="Métodos">
+        
+     /* Permite al empleado registrar nuevos clientes y agregarlos al arreglo de Usuarios*/
      public static void RegClient() {
         int ID; String nombre, fnac, email, direcc;
         String pass = "";
@@ -71,6 +73,8 @@ public class Empleado extends Usuario {
         
      }
      
+     
+     /* Permite al empleado realizar nuevos pedidos o empezar la fabricacion del mueble de los pedidos aprovados */
      public static void ReaFinPed(){
          int opt;
             System.out.println("1-Realizar Pedido");
@@ -124,13 +128,16 @@ public class Empleado extends Usuario {
         }                  
         }
         
+     
+     /* El pedido es enviado al cliente y pasa al estado "Completado" */
      public static void SendPed(){
         boolean ciclo = true;
         ArrayList<Pedido> cond = new ArrayList();
         int o;
         while(ciclo) {
-             cond = LeerPedidos("Terminado");
+             cond = LeerPedidos("Etiquetado");
              if (cond.isEmpty()) {
+                 System.out.println("Asegurese de etiquetar los pedidos antes de enviarlos\n");
                  System.out.println("1-Enviar Pedido (No disponible)\n2-Salir");
                  o = lee.nextInt();
                 
@@ -144,7 +151,7 @@ public class Empleado extends Usuario {
                     System.out.println("<--------------------------------------------------->");
                     System.out.println(cond.get(ID).getInfoPedido());
                     System.out.println("<--------------------------------------------------->");
-                    System.out.println("1-Enviar Pedido\n2-Volver");
+                    System.out.println("    1-Enviar Pedido\n2-Volver");
                     int opt = lee.nextInt();
                       if (opt == 1){
                         System.out.println("¿Esta seguro de querer enviar el pedido?" + cond.get(ID).getID() + " Hecho por " + cond.get(ID).getNombre_Cliente() + "?");
@@ -168,12 +175,49 @@ public class Empleado extends Usuario {
          }
      }
      
+     
+     
+     /* Se impime la etiqueta de los muebles terminados, y se le otorga el estado "Etiquetado" en orden de habilitar la entrega del mueble */
      public static void PrintEti(){
-        for(int i = 0; i < Main.Pedidos.size() ; i++) {
-            if("Completado".equals(Main.Pedidos.get(i).getEstado())){
-                Main.Pedidos.get(i).getInfoPedido();
-            }
-        }
+ boolean ciclo = true;
+        ArrayList<Pedido> cond = new ArrayList();
+        int o;
+        while(ciclo) {
+             cond = LeerPedidos("Terminado");
+             if (cond.isEmpty()) {
+                 System.out.println("1-Imprimir Etiqueta (No disponible)\n2-Salir");
+                 o = lee.nextInt();
+                
+            } else {
+                 System.out.println("1-Imprimir Etiqueta\n2-Salir");
+                 o = lee.nextInt();
+                 if (o == 1){
+                    while (true){
+                    System.out.println("Seleccione el ID del pedido. Los ID estan listados arriba ");
+                    int ID = (lee.nextInt()-1);
+                    System.out.println("<--------------------------------------------------->");
+                    System.out.println(cond.get(ID).getInfoPedido());
+                    System.out.println("<--------------------------------------------------->");
+                    System.out.println("    1-Imprimir Etiqueta\n   2-Volver");
+                    int opt = lee.nextInt();
+                      if (opt == 1){
+                            System.out.println("Informmacion del cliente\n <--------------------------------------------------->");
+                            System.out.println(cond.get(ID).getData_Cliente());
+                            System.out.println(" <--------------------------------------------------->");
+                            int ind =  getIndexArr(cond, ID);                      
+                            Main.Pedidos.get(ind).setEstado("Etiquetado");
+                            ciclo = false;
+                            break;
+                       } else {
+                            break;
+                            }  
+                    }
+                    }     
+                }
+             if (o == 2) { 
+                ciclo = false;
+                }             
+         }
      }
     
    //</editor-fold>  

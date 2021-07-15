@@ -54,11 +54,14 @@ public class Inventario {
         return tornillos;
     }
 
+    /* Devuelve un array con el inventario */
     public int[] getInventearioNum() {
         int[] materiales = new int[] {this.madera ,this.metal,this.pintura,this.clavos,this.tornillos};
         return materiales;
     }
     
+    
+    /* Permite restar del inventario los materiales usados al crear un mueble */
     public void restarInv(int[] recetaM){
         this.madera = this.madera - recetaM[0];
         this.metal = this.metal - recetaM[1];

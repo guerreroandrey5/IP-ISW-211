@@ -11,28 +11,32 @@ import java.util.Scanner;
  */
 public class Pedido {
     public static Scanner leer = new Scanner(System.in);
-    private String Nombre_Cliente;
+    private int ID_Cliente;
     private int Tipo_mueble;
     private String Estado;
     protected String ID;
     
     public Pedido(){
     this.ID = "";
-    this.Nombre_Cliente = "";
+    this.ID_Cliente = 0;
     this.Tipo_mueble = 0;
     this.Estado = "";
     }
     
-    public Pedido(String name, String estado, int Tipo, String id){
+    public Pedido(int IDC, String estado, int Tipo, String id){
     this.ID = id;
-    this.Nombre_Cliente = name;
+    this.ID_Cliente = IDC;
     this.Tipo_mueble = Tipo;
     this.Estado = estado;
     }
 
     //<editor-fold defaultstate="collapsed" desc="Gets & Sets">
     public String getNombre_Cliente() {
-        return Nombre_Cliente;
+        return Usuario.getNameClient(ID_Cliente);
+    }
+    
+    public String getData_Cliente() {
+        return Usuario.getEtiquetaCliente(ID_Cliente);
     }
 
     public String getTipo_mueble() {
@@ -58,6 +62,7 @@ public class Pedido {
         return ID;
     }
 
+    /* Permite obtener la informacion del pedido y presentarla en la consola */
     public String getInfoPedido() {
         String info = "ID pedido: " + getID() + "\n" +
                 "Nombre del Cliente: " + getNombre_Cliente() + "\n" +

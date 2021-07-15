@@ -57,6 +57,8 @@ public class Administrador extends Usuario {
     
 //<editor-fold defaultstate="collapsed" desc="Métodos">
     
+    
+    /* Permite al Admin revisar, aprobar o rechazar los pedidos de los clientes realizados por medio de los empleados */
      public static void AdministrarPedidos(){
          ArrayList<Pedido> comp = LeerPedidos("En revisión.");
             if (comp.isEmpty()) {} else {
@@ -92,7 +94,7 @@ public class Administrador extends Usuario {
         }
      
         
-     
+     /* Permite al administrador visualizar los pedidos activos, asi como le permite cancelarlos */
      public static void Pedidos(){
          boolean ciclo = true;
          ArrayList<Pedido> con;
@@ -134,6 +136,8 @@ public class Administrador extends Usuario {
          }
      }
      
+     
+     /* Permite al admin visualizar las recetas disponibles */
      public static void Recetas(){
          for (int i = 0; i < Main.Recetas.size(); i++) {
                 System.out.println("<--------------------------------------------------->");
@@ -141,6 +145,7 @@ public class Administrador extends Usuario {
         }
      }
      
+     /* Permite al admin consultar los materiales disponibles, asi como comparar los materiales necesarios e informarle si se deben o no comprar mas insumos para los pedidos */
      public static void Consultas(){
         int opt;
             System.out.println("1-Consultar Inventario de Insumos");
@@ -182,6 +187,8 @@ public class Administrador extends Usuario {
         }   
      }
      
+     
+     /* Funcion para comparar la cantidad de materiales disponibles y necesarios */
      public static void CompararPM(boolean condition){
         int[] receta;
         int madera = 0;
@@ -252,7 +259,7 @@ public class Administrador extends Usuario {
          
     }
    
-     
+     /* Funcion para calcular cuantos muebles es posible crear con los materiales disponibles */
      public static void cantM(int[] av, int[] ned, String mueble) {
          int cantidad = 0;
          for (int i = 0; i < av.length; i++) {
