@@ -46,11 +46,11 @@ public class Main {
             Main.login();            
             break;
             
-            case 2:
+            case 3:
             System.out.println("Hoy será un día maravilloso!");         
             break;
             
-            case 3:
+            case 2:
             Main.RegEmpl();
             break;
             
